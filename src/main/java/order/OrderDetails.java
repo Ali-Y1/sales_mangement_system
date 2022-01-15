@@ -1,26 +1,16 @@
+package order;
+import java.time.*;
 
-import java.util.*;
-
-/**
- *
- */
 public class OrderDetails {
 
-    /**
-     * Default constructor
-     */
-    public OrderDetails() {
+    private String Details;
+    private LocalDateTime Date;
+
+    public OrderDetails(String details) {
+        LocalDateTime Date = LocalDateTime.now();
+        Details = details;
+
     }
-
-    /**
-     *
-     */
-    public void Details;
-
-    /**
-     *
-     */
-    public void Date;
 
 
 }

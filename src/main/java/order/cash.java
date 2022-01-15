@@ -1,15 +1,11 @@
+package order;
+public class cash implements Payment {
 
-import java.util.*;
-
-/**
- *
- */
-public class cash extends Payment {
-
-    /**
-     * Default constructor
-     */
     public cash() {
     }
 
+    @Override
+    public void pay(int a) {
+        System.out.println("Payment of Value:" + a + "Has been successfully paid");
+    }
 }

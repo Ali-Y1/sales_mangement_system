@@ -1,15 +1,15 @@
-
-import java.util.*;
+package order;
 
 /**
  *
  */
-public class Credit extends Payment {
+public class Credit implements Payment {
 
-    /**
-     * Default constructor
-     */
     public Credit() {
     }
 
+    @Override
+    public void pay(int a) {
+
+    }
 }

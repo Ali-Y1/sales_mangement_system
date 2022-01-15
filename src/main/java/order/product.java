@@ -1,31 +1,36 @@
+package order;
 
-import java.util.*;
-
-/**
- *
- */
 public class product {
 
-    /**
-     * Default constructor
-     */
     public product() {
     }
 
-    /**
-     *
-     */
-    public void Name;
-
-    /**
-     *
-     */
-    public void Price;
-
-    /**
-     *
-     */
-    public void Quantity;
+    private String Name;
+    private int Price;
+    private int Amount;
 
 
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public int getPrice() {
+        return Price;
+    }
+
+    public void setPrice(int price) {
+        Price = price;
+    }
+
+    public int getAmount() {
+        return Amount;
+    }
+
+    public void setAmount(int amount) {
+        Amount = amount;
+    }
 }

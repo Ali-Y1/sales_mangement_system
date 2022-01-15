@@ -1,33 +1,51 @@
+package order;
 
-import java.util.*;
-
-/**
- *
- */
 public class customer {
+    private int Phone;
+    private String FnName;
+    private String LnName;
+    private String Email;
+    private String Address;
 
-    /**
-     * Default constructor
-     */
     public customer() {
     }
 
-    /**
-     *
-     */
-    public void Name;
+    public String getEmail() {
+        return Email;
+    }
+    public String getFnName() {
+        return FnName;
+    }
 
-    /**
-     *
-     */
-    public void Phone
-    Number;
+    public void setFnName(String fnName) {
+        FnName = fnName;
+    }
 
-    /**
-     *
-     */
-    public void Email
-    Address;
+    public String getLnName() {
+        return LnName;
+    }
 
+    public void setLnName(String lnName) {
+        LnName = lnName;
+    }
 
+    public int getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(int phone) {
+        Phone = phone;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
 }

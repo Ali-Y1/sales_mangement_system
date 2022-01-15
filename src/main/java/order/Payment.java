@@ -1,15 +1,6 @@
+package order;
 
-import java.util.*;
-
-/**
- *
- */
-public interface payment {
-
-
-    /**
-     * @param int
-     */
-    public void pay(void int);
+public interface Payment {
+    public void pay(int a);
 
 }
