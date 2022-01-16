@@ -1,9 +1,6 @@
 package order;
 
-/**
- *
- */
-public class regularOrder implements order {
+public class regularOrder implements orders {
 
     /**
      * Default constructor
@@ -11,12 +8,15 @@ public class regularOrder implements order {
     public regularOrder() {
     }
 
-
-    /**
-     *
-     */
-    public void setCustomer() {
-        // TODO implement here
+    @Override
+    public customer setCustomer(String FnName, String LnName, String email, String Address, int phone) {
+        customer c = new customer();
+        c.setAddress(Address);
+        c.setEmail(email);
+        c.setFnName(FnName);
+        c.setLnName(LnName);
+        c.setPhone(phone);
+        return c;
     }
 
     /**
