@@ -6,6 +6,6 @@ public class cash implements Payment {
 
     @Override
     public void pay(int a) {
-        System.out.println("Payment of Value:" + a + "Has been successfully paid");
+        System.out.println("Payment of Value:" + a + "$ Has been successfully paid");
     }
 }

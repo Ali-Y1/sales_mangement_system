@@ -12,8 +12,5 @@ public class fastOrder extends orders {
         System.out.println("This Order is finished");
     }
 
-    public void setPayment() {
-        System.out.println("This Order is finished");
-    }
 
 }

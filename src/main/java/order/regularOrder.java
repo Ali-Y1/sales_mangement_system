@@ -10,8 +10,5 @@ public class regularOrder extends orders {
 
     }
 
-    public void setPayment() {
-        // TODO implement here
-    }
 
 }

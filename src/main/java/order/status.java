@@ -26,10 +26,13 @@ public class status {
         switch(currentStatus2){
             case 1:
                 currentStatus = pendding;
+                break;
             case 2:
                 currentStatus = shipped;
+                break;
             case 3:
                 currentStatus = finished;
+                break;
             default:
                 break;
         }
