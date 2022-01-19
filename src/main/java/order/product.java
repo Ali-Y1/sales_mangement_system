@@ -34,4 +34,13 @@ public class product {
     public void setAmount(int amount) {
         Amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return "\n product{" +
+                "Name='" + Name + '\'' +
+                ", Price=" + Price +
+                ", Amount=" + Amount +
+                '}';
+    }
 }

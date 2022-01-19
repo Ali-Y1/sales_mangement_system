@@ -48,4 +48,15 @@ public class customer {
     public void setEmail(String email) {
         Email = email;
     }
+
+    @Override
+    public String toString() {
+        return "customer{" +
+                "Phone=" + Phone +
+                ", FnName='" + FnName + '\'' +
+                ", LnName='" + LnName + '\'' +
+                ", Email='" + Email + '\'' +
+                ", Address='" + Address + '\'' +
+                '}';
+    }
 }
