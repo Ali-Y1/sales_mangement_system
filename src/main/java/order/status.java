@@ -38,6 +38,9 @@ public class status {
         }
     }
 
-
-
+    @Override
+    public String toString() {
+        return "status{" + getStatus() +
+                '}';
+    }
 }

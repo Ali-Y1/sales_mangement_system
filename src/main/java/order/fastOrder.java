@@ -12,5 +12,9 @@ public class fastOrder extends orders {
         System.out.println("This Order is finished");
     }
 
+    public status getStatus() {
+        return s;
+    }
+
 
 }
