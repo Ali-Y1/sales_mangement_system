@@ -1,4 +1,4 @@
-package Invoices;
+package invoice;
 
 public class InvoicesController {
 	private InvoicesModel invoice;
