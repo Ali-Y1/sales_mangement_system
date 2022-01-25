@@ -3,10 +3,11 @@ singleton
 builder
 strategy
 mvc
+flyweight
+observer
 
 Design patterns to be implemented:
-flyweight??
-observer
 visitor
+
 
 

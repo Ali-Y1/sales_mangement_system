@@ -1,7 +1,7 @@
 package EmailServices;
 
-public class ShopaholicCustomer implements Observer {
-    @Override
+public class ShopaholicCustomer implements Observers {
+
     public void update(String message) {
         processMessage(message);
     }

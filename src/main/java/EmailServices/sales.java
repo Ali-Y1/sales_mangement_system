@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observer;
 
-public class sales implements subject{
-    private List<Observer> customers = new ArrayList<>();
-    @Override
-    public void addSubscriber(Observer o) {
+public class sales{
+    private static List<Observers> customers = new ArrayList<Observers>();
+
+    public static void addSubscriber(Observers o) {
         customers.add(o);
     }
-    @Override
-    public void removeSubscriber(Observer o) {
+
+    public static void removeSubscriber(Observers o) {
         customers.remove(o);
     }
-    @Override
-    public void notifySubscribers() {
+
+    public static void notifySubscribers() {
         System.out.println("A new item is on sale! Act fast before it sells out!");
-        for(Observer o: customers) {
-            o.update(null,"Sale!");
+        for(Observers o: customers) {
+            o.update("Sale!");
         }
     }
 }

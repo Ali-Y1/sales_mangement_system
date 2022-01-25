@@ -1,5 +1,5 @@
 package EmailServices;
 
-public interface Observer {
+public interface Observers {
     void update(String message);
 }
