@@ -3,6 +3,8 @@ package stock;
 //  @Override
 //  public void start(Stage stage) throws IOException {
 
+import java.util.HashMap;
+
 /**
  * FXMLLoader fxmlLoader = new FXMLLoader(StockApp.class.getResource("hello-view.fxml"));
  * Scene scene = new Scene(fxmlLoader.load(), 320, 240);
@@ -13,10 +15,20 @@ package stock;
 //flyweight design pattern for products and supplier
 //mvc stock
 //if there is weakness in products notifyObs manag .
-//getproduct(); searches hashmap for products with product name as parameter and returns it.
+//GetProduct(); searches hashmap for products with product name as parameter and returns it.
 //hashmap impl for products
 public class Stock {
+private static final HashMap product = new HashMap();
 
+public Products GetProduct(String ProductName){
+    Products prod=(Products)product.get(ProductName);
+    if (prod==null){
+        prod = new Products();
+        product.put(ProductName,prod);
+        System.out.println("Creating a new product : "+ prod);
+    }
+    return prod;
+}
 
 }
 

@@ -4,9 +4,9 @@ package stock;
 public class EditStock {
 private Products product;
 public void EditStock(String name, int price, int quantity ,String productname,Stock stock){
-    //product=stock.getproduct(productname);
+    product=stock.GetProduct(productname);
 
-    product.setName(name);
+    product.SetNames(name);
     product.setPrice(price);
     product.setAmount(quantity);
 

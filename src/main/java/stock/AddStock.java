@@ -9,7 +9,6 @@ public void AddStock(int add){
     this.add=add;
 }
 public String getname(){
-
     return this.name;
 }
 public void addproduct(int product){

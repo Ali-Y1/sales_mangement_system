@@ -9,17 +9,18 @@ public class Products {
     supplier sup;
     //discount
 
-public void products(String name,int Price,int Amount,supplier sup){
-    this.sup=sup;
-    this.Amount=Amount;
-    this.Price=Price;
-
+public void products(String name,int Price,int Amount,supplier sup) {
+    this.sup = sup;
+    this.Amount = Amount;
+    this.Price = Price;
 }
     public String getName() {
         return Name;
     }
-
-    public void setName(String name) {
+    public void SetNames(String name) {
+        Name = name;
+    }
+    public void SetProdName(String name) {
         Name = name;
     }
 
@@ -31,7 +32,6 @@ public void products(String name,int Price,int Amount,supplier sup){
         Price = price;
     }
 
-
     public int getAmount() {
         return Amount;
     }
@@ -39,9 +39,6 @@ public void products(String name,int Price,int Amount,supplier sup){
     public void setAmount(int amount) {
         Amount = amount;
     }
-
-
-
 
 
 
