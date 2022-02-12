@@ -1,5 +1,9 @@
 package Database;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import order.OrderInfo;
+import order.Orders;
 import order.customer;
 import order.product;
 
@@ -7,6 +11,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class SQLQueries {
     SQLDatabaseConnection con = new SQLDatabaseConnection();
@@ -108,4 +118,33 @@ public class SQLQueries {
         }
         return c;
     }
+    public ObservableList<OrderInfo> fetchOrders() {
+        connection = con.getConnection();
+        OrderInfo order;
+        ObservableList<OrderInfo> orders = FXCollections.observableArrayList();
+        ResultSet resultSet= null;;
+        try {
+            Statement statement = connection.createStatement();
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "SELECT * from orders";
+            resultSet = statement.executeQuery(selectSql);
+
+
+            while(resultSet.next()){
+                order = new OrderInfo();
+                order.setId(Integer.parseInt(resultSet.getString(1).trim().replaceAll(" +", " ")));
+                order.setPrice(Float.parseFloat(resultSet.getString(2).trim().replaceAll(" +", " ")));
+                order.setDate(resultSet.getString(3));
+                order.setStatus(resultSet.getString(4).trim().replaceAll(" +", " "));
+                //order.setC((customer) resultSet.getObject(5));
+                order.parseProduct(resultSet.getString(6));
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return orders;
+    }
+
 }

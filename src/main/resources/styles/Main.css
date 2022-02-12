@@ -1,0 +1,55 @@
+
+
+.v-menu-button{
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(rgba(3, 189, 131, 0.94), #00a3e0);
+    -fx-border-radius: 2px;
+    -fx-border-width:  0.1px 0.1px 0.1px 0.1px;
+    -fx-border-color: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(77, 77, 77, 0.6), 5, 0.0 , 0 , 1 );
+}
+
+.v-menu-button:hover{
+    -fx-background-color: linear-gradient(#5F2588FF, #a7d7e9);
+}
+.minbutton{
+    -fx-background-color: #5d3c75;
+}
+.minbutton:hover{
+    -fx-background-color: rgba(109, 68, 136, 0.87);
+}
+#exitButton{
+    -fx-background-color: #5d3c75;
+}
+#exitButton:hover{
+    -fx-background-color: #d20c0c;
+}
+.menu-bar{
+    -fx-background-color: #5d3c75;
+
+}
+.menu-bar3{
+    -fx-background-color: #5d3c75;
+    -fx-effect: dropshadow( three-pass-box , rgba(43, 52, 128, 0.68), 5, 0.0 , 0 , 1 );
+    -fx-border-width: 0 0 0.5px 0;
+    -fx-border-color: black;
+
+}
+.menu-bar .label{
+    -fx-text-fill:white ;
+}
+.menu-bar-v{
+    -fx-text-fill: white;
+
+    -fx-background-color: linear-gradient(#0836a8,#5d3c75);
+    -fx-effect: dropshadow( three-pass-box , rgba(43, 52, 128, 0.68), 5, 0.0 , 0 , 1 );
+}
+.menu-button{
+    -fx-text-fill: white;
+}
+.menu{
+    -fx-text-fill: white;
+}
+.pan{
+    -fx-background-color: #CACFD6;
+}

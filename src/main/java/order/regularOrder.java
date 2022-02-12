@@ -1,6 +1,6 @@
 package order;
 
-public class regularOrder extends orders {
+public class regularOrder extends Orders {
 
     OrderDetails od;
     public regularOrder() {

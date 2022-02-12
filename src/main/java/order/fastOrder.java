@@ -1,7 +1,7 @@
 package order;
 
 
-public class fastOrder extends orders {
+public class fastOrder extends Orders {
     status s = new status();
 
     public fastOrder() {

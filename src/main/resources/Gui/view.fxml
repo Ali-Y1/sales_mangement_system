@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" styleClass="pan" stylesheets="@../styles/Main.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller">
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="40.0" styleClass="menu-bar-v">
+         <children>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#orderButtonClick" prefHeight="34.0" prefWidth="33.0" styleClass="v-menu-button">
+               <graphic>
+                  <ImageView accessibleRole="BUTTON" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#orderButtonClick" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@3099883.JPG" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stockButtonClick" prefHeight="34.0" prefWidth="33.0" styleClass="v-menu-button">
+               <graphic>
+                  <ImageView accessibleRole="BUTTON" fitHeight="22.0" fitWidth="21.0" onMouseClicked="#stockButtonClick" pickOnBounds="true" preserveRatio="true" styleClass="v-menu-button">
+                     <image>
+                        <Image url="@stock.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#invoiceButtonClick" prefHeight="34.0" prefWidth="33.0" styleClass="v-menu-button">
+               <graphic>
+                  <ImageView accessibleRole="BUTTON" fitHeight="22.0" fitWidth="17.0" onMouseClicked="#invoiceButtonClick" pickOnBounds="true" preserveRatio="true" styleClass="v-menu-button">
+                     <image>
+                        <Image url="@invoice.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox fx:id="panel" alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" text="Welcome" />
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <HBox alignment="TOP_RIGHT" onMouseClicked="#pressed" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="12.0" prefWidth="600.0" styleClass="menu-bar3" BorderPane.alignment="TOP_RIGHT">
+         <children>
+            <MenuBar onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="25.0" prefWidth="531.0">
+              <menus>
+                <Menu text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#min" prefHeight="36.0" prefWidth="31.0" styleClass="minbutton">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="MINUS" size="17" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="button1" accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#max" prefHeight="25.0" prefWidth="23.0" styleClass="minbutton">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SQUARE" size="12" />
+                     </graphic>
+                  </Button>
+                  <Button id="exitButton" mnemonicParsing="false" onAction="#close" prefHeight="32.0" prefWidth="31.0">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" size="17" />
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <effect>
+            <Shadow />
+         </effect>
+      </HBox>
+   </top>
+</BorderPane>

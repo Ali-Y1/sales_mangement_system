@@ -19,21 +19,28 @@ public class product {
         Name = name;
     }
 
-    public int getPrice() {
-        return Price;
-    }
-
     public void setPrice(int price) {
         Price = price;
+    }
+
+    public void setAmount(int amount) {
+        Amount = amount;
+    }
+
+    public int getPrice() {
+        return Price;
     }
 
     public int getAmount() {
         return Amount;
     }
 
-    public void setAmount(int amount) {
+    public product(String name, int price, int amount) {
+        Name = name;
+        Price = price;
         Amount = amount;
     }
+
 
     @Override
     public String toString() {

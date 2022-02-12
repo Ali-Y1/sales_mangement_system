@@ -2,8 +2,10 @@ module com.example.salesmangement {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.mail;
 
 
-    opens com.example.salesmangement to javafx.fxml;
-    exports com.example.salesmangement;
+    opens Gui to javafx.fxml;
+    opens order to javafx.base;
+    exports Gui;
 }

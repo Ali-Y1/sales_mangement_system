@@ -6,7 +6,7 @@ package stock;
 import java.util.HashMap;
 
 /**
- * FXMLLoader fxmlLoader = new FXMLLoader(StockApp.class.getResource("hello-view.fxml"));
+ * FXMLLoader fxmlLoader = new FXMLLoader(StockApp.class.getResource("view.fxml"));
  * Scene scene = new Scene(fxmlLoader.load(), 320, 240);
  * stage.setTitle("Stock");
  * stage.setScene(scene);
