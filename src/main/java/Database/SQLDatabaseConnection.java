@@ -13,9 +13,9 @@ public class SQLDatabaseConnection {
     private Connection connection;
         private Connection connect(){
             //ResultSet resultSet = null;
-            String dbURL = "jdbc:sqlserver://DESKTOP-5PMRJ61;databaseName=sales_mangment";
+            String dbURL = "jdbc:sqlserver://serverName;databaseName=sales_mangment";
             String user = "sa";
-            String pass = "aliali.aliali.313";
+            String pass = "your pass";
 
             try {
                 connection = DriverManager.getConnection(dbURL,user,pass);
