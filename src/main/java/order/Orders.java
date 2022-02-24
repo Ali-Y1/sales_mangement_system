@@ -20,7 +20,6 @@ public abstract class Orders {
             c = cC.addCustomer(FnName, LnName, email, Address, phone);
         }
         return c;
-
     }
     public void CreateAnOrder(String Details) {
         od = new OrderDetails(Details);

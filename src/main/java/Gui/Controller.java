@@ -1,41 +1,26 @@
 package Gui;
 
-import Database.SQLQueries;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import order.OrderInfo;
-import order.Orders;
+import stock.StockController;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class Controller{
     @FXML
-    private Label Orders;
-    @FXML
     private VBox panel;
-    @FXML
-    private StackPane imageView;
-    @FXML
-    private StackPane imageView2;
-    @FXML
-    private StackPane imageView3;
-    @FXML
-    private Button button1;
+
 
 
     double x,y;
@@ -105,6 +90,11 @@ public class Controller{
     }
     @FXML
     void close(ActionEvent event) {
+        try {
+            StockController.scheduledExecutorService.shutdownNow();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
 

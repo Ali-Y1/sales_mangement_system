@@ -6,6 +6,9 @@ import order.OrderInfo;
 import order.Orders;
 import order.customer;
 import order.product;
+import stock.StockProducts;
+import stock.Type;
+import stock.supplier;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,6 +20,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class SQLQueries {
     SQLDatabaseConnection con = new SQLDatabaseConnection();
@@ -137,7 +141,7 @@ public class SQLQueries {
                 order.setPrice(Float.parseFloat(resultSet.getString(2).trim().replaceAll(" +", " ")));
                 order.setDate(resultSet.getString(3));
                 order.setStatus(resultSet.getString(4).trim().replaceAll(" +", " "));
-                //order.setC((customer) resultSet.getObject(5));
+                order.setC(fetchCustomerByID(Integer.parseInt(resultSet.getString(5))));
                 order.parseProduct(resultSet.getString(6));
                 orders.add(order);
             }
@@ -145,6 +149,80 @@ public class SQLQueries {
             e.printStackTrace();
         }
         return orders;
+    }
+    public ArrayList<Type> fetchTypes() {
+        connection = con.getConnection();
+        Type type;
+        ArrayList<Type> types = new ArrayList<Type>();
+        ResultSet resultSet= null;;
+        try {
+            Statement statement = connection.createStatement();
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "SELECT * from ProductType";
+            resultSet = statement.executeQuery(selectSql);
+
+
+            while(resultSet.next()){
+                type = new Type();
+                type.setName(resultSet.getString(1).trim().replaceAll(" +", " "));
+                types.add(type);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return types;
+    }
+    public HashMap<String, supplier> fetchSupplier() {
+        connection = con.getConnection();
+        supplier s;
+        HashMap<String,supplier> suppliers = new HashMap<String,supplier>();
+        ResultSet resultSet= null;;
+        try {
+            Statement statement = connection.createStatement();
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "SELECT * from supplier";
+            resultSet = statement.executeQuery(selectSql);
+
+            while(resultSet.next()){
+                s = new supplier();
+                s.setId(Integer.parseInt(resultSet.getString(1).trim().replaceAll(" +", " ")));
+                s.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
+                s.setEmail(resultSet.getString(3).trim().replaceAll(" +", " "));
+                s.setPhoneNumber(Integer.parseInt(resultSet.getString(4).trim().replaceAll(" +", " ")));
+                suppliers.put(s.getName(),s);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return suppliers;
+    }
+    public ArrayList<StockProducts> fetchStockProducts(String type) {
+        connection = con.getConnection();
+        ArrayList<StockProducts> Products = new ArrayList<StockProducts>();
+        ResultSet resultSet= null;;
+        try {
+            Statement statement = connection.createStatement();
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "SELECT * from StockProducts where type =" + type;
+            resultSet = statement.executeQuery(selectSql);
+
+
+            while(resultSet.next()){
+                StockProducts p= new StockProducts();
+                p.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
+                p.setAmount(Integer.parseInt(resultSet.getString(3).trim().replaceAll(" +", " ")));
+                p.setPrice(Integer.parseInt(resultSet.getString(4).trim().replaceAll(" +", " ")));
+                //p.setSup(resultSet.getString(5).trim().replaceAll(" +", " "));
+
+                Products.add(p);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Products;
     }
 
 }

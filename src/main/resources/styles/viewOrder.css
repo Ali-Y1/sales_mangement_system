@@ -1,3 +1,33 @@
+.HBox1{
+    -fx-border-width: 1px 0px 1px 0px;
+    -fx-border-color: #9A9A9A;
+}
+.customerInfo{
+    -fx-text-fill: #000000;
+    -fx-background-color: #f5f1f1;
+    -fx-background-radius: 1px 4px 1px 4px;
+    -fx-padding: 1px 4px 1px 4px;
+}
+.customerInfo2{
+    -fx-text-fill: #f5f1f1;
+}
+/* main pan */
+.pan{
+    -fx-background-radius: 4px;
+    -fx-border-color: #5d3c75;
+    -fx-border-width: 20px 20px 20px 20px;
+}
+.payment{
+    -fx-text-fill: #5d3c75;
+    -fx-background-color: #f5f1f1;
+    -fx-background-radius: 3px;
+    -fx-border-color: #5d3c75;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-padding: 1px 4px 1px 4px;
+}
+
+/*Table style*/
 .table-view .column-header,
 .table-view .column-header-background .filler {
     -fx-background-color:  #5d3c75;
@@ -21,23 +51,6 @@
     -fx-text-background-color:  #5d3c75;
 
 }
-
-/* try table row color */
-
-/*end*/
-.pan{
-   -fx-border-radius: 6px;
-    -fx-border-width: 0.7px;
-    -fx-border-color: rgba(0, 0, 0, 0.24);
-}
-.createBT{
-    -fx-background-color: rgba(3, 189, 131, 0.94);
-}
-.createBT:hover{
-    -fx-background-color: rgb(5, 199, 138);
-}
-
-/* scroll bar starts here */
 
 /* The increment and decrement button CSS class of scrollbar */
 .table-view .increment-button ,.table-view .decrement-button {
@@ -64,43 +77,13 @@
     -fx-background-radius: 2em;
 
 }
-
-/* tab properties */
-
-.tab-pane {
-    -fx-background-color: #e6e6e6;
-    -fx-border-radius: 3px;
+.table-view {
+    -fx-border-width: 0px;
+}
+.text-area{
+    -fx-background-color: #f5f1f1;
 }
 
-.tab {
-    -fx-background-color: #333333;
-    -fx-border-radius: 3px;
-}
-
-.tab-pane>*.tab-header-area>*.tab-header-background
-{
-    -fx-background-color: -fx-outer-border, -fx-text-box-border, #333333;
-}
-
-.tab-label {
-    -fx-text-fill: #e6e6e6;
-}
-
-.tab:selected .tab-label {
-    -fx-text-fill: #003333ff;
-}
-
-.tab:selected {
-    -fx-background-color: rgba(3, 189, 131, 0.94);
-    -fx-border-radius: 3px;
-}
-
-.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
-    -fx-border-width: 1px 1px 1px 1px;
-    -fx-border-color: #4d1a4dff;
-    -fx-border-radius: 3px;
-}
-.text-field{
-    -fx-background-radius: 10px;
-    -fx-background-color: #e6e6e6;
+.totalPrice{
+    -fx-background-color: #969696;
 }

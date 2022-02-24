@@ -15,13 +15,6 @@ public int getTemperature() {
     public int gethumidity() {
         return this.humidity;
     }
-    /**public void Allowedtemperature (int temperature){
-    if (temperature>20){
-        System.out.print ("Not Good Temp");
-    }
-    if (temperature<20){
-        System.out.print ("Good Temp");
-     }   }**/
 
 }
 

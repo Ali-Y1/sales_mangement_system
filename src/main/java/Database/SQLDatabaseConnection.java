@@ -10,12 +10,12 @@ public class SQLDatabaseConnection {
         // Connect to your database.
         // Replace server name, username, and password with your credentials
         // class is based on singleton design pattern
-    private Connection connection;
+    private static Connection connection;
         private Connection connect(){
             //ResultSet resultSet = null;
-            String dbURL = "jdbc:sqlserver://serverName;databaseName=sales_mangment";
-            String user = "sa";
-            String pass = "your pass";
+            String dbURL = "jdbc:sqlserver://DESKTOP-5PMRJ61;databaseName=sales_mangment";
+            String user = "ali";
+            String pass = "123456";
 
             try {
                 connection = DriverManager.getConnection(dbURL,user,pass);

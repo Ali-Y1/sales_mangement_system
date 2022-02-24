@@ -8,13 +8,14 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../styles/order.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.OrderController">
+<VBox stylesheets="@../styles/order.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.OrderController">
    <children>
       <HBox prefHeight="21.0" prefWidth="316.0">
          <children>
@@ -26,12 +27,15 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="16.0" prefWidth="94.0" styleClass="createBT" text="Create Orders">
+            <Button mnemonicParsing="false" onAction="#create" prefHeight="16.0" prefWidth="94.0" styleClass="createBT" text="Create Orders">
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
             </Button>
-            <Region prefHeight="32.0" prefWidth="135.0" HBox.hgrow="ALWAYS" />
+            <Region prefHeight="32.0" prefWidth="135.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></Region>
             <Button mnemonicParsing="false" prefHeight="16.0" prefWidth="82.0" text="Export" textFill="#5d3c75">
                <graphic>
                   <FontAwesomeIconView fill="#5d3c75" glyphName="UPLOAD" />
@@ -41,20 +45,29 @@
                </HBox.margin>
             </Button>
          </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
       </HBox>
+      <TextField fx:id="search" onAction="#searchOrders" prefHeight="14.0" prefWidth="381.0" promptText="Search">
+         <VBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </VBox.margin>
+      </TextField>
       <TabPane styleClass="pan" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
         <tabs>
           <Tab text="All Orders">
             <content>
               <AnchorPane>
                      <children>
-                        <TableView fx:id="tableOrders" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="tableOrders" fixedCellSize="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefWidth="379.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                             <TableColumn fx:id="IdCol" prefWidth="75.0" text="ID">
                             </TableColumn>
-                            <TableColumn prefWidth="75.0" text="Customer">
+                              <TableColumn fx:id="DateCol" prefWidth="91.0" text="Date" />
+                            <TableColumn fx:id="customerCol" prefWidth="74.0" text="Customer">
                             </TableColumn>
-                              <TableColumn fx:id="StatusCol" prefWidth="75.0" text="Status">
+                              <TableColumn fx:id="StatusCol" prefWidth="60.0" text="Status">
                               </TableColumn>
                               <TableColumn fx:id="PriceCol" prefWidth="75.0" text="Price">
                               </TableColumn>
@@ -64,14 +77,25 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Pendding">
+          <Tab onSelectionChanged="#pennding" text="Pendding">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane>
+                     <children>
+                        <TableView fx:id="tableOrdersPennding" fixedCellSize="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columns>
+                              <TableColumn fx:id="IdCol1" prefWidth="75.0" text="ID" />
+                              <TableColumn fx:id="DateCol1" prefWidth="91.0" text="Date" />
+                              <TableColumn fx:id="customerCol1" prefWidth="74.0" text="Customer" />
+                              <TableColumn fx:id="StatusCol1" prefWidth="60.0" text="Status" />
+                              <TableColumn fx:id="PriceCol1" prefWidth="75.0" text="Price" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>
          <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="3.0" />
          </VBox.margin>
       </TabPane>
    </children>

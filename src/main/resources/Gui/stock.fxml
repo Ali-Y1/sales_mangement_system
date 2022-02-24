@@ -1,10 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label text="stock" />
-   </children>
-</VBox>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stock.StockController">
+   <center>
+         <TabPane tabClosingPolicy="UNAVAILABLE">
+             <tabs>
+                 <Tab text="View Stock">
+                     <content>
+                         <AnchorPane minHeight="0.0" minWidth="0.0">
+                             <children>
+                                 <TableView layoutX="68.0" layoutY="30.0" prefHeight="90.0" prefWidth="145.0">
+                                     <columns>
+                                         <TableColumn prefWidth="75.0" text="C1" />
+                                         <TableColumn prefWidth="75.0" text="C2" />
+                                     </columns>
+                                 </TableView>
+                                 <Text layoutX="742.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="94.13671875" />
+                             </children>
+   
+                                                    </AnchorPane>
+                     </content>
+                 </Tab>
+                 <Tab text="InventoryCondition">
+                     <content>
+                         <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
+                             <children>
+                        <HBox layoutY="42.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature:" wrappingWidth="134.13671875" />
+                                    <HBox spacing="20.0">
+                                       <children>
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" stylesheets="@stock.css" text="Check Temperature (C):">
+                                                       <cursor>
+                                                           <Cursor fx:constant="DEFAULT" />
+                                                       </cursor>
+                                                   </Button>
+                                                   <Label fx:id="label1" prefHeight="32.0" prefWidth="46.0" text="Label" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="20.0">
+                                       <children>
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="178.0" stylesheets="@stock.css" text="Temperature Level:">
+                                                       <effect>
+                                                           <SepiaTone />
+                                                       </effect>
+                                                   </Button>
+                                                   <Label fx:id="label2" prefHeight="35.0" prefWidth="52.0" text="Label" />
+                                       </children>
+                                    </HBox>
+                                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Humidity" wrappingWidth="131.13671875" />
+                                    <HBox spacing="20.0">
+                                       <children>
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="153.0" stylesheets="@stock.css" text="Check Humidity (%):" />
+                     
+                                                                                    <Label fx:id="label3" prefHeight="31.0" prefWidth="50.0" text="Label" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="20.0">
+                                       <children>
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0" stylesheets="@stock.css" text="Humidity Level:" />
+                                                   <Label fx:id="label4" prefHeight="32.0" prefWidth="51.0" text="Label" />
+                                       </children>
+                                    </HBox>
+                                             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pressure" />
+                                    <HBox spacing="20.0">
+                                       <children>
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" stylesheets="@stock.css" text="Check Pressure (kPa):" />
+                                                   <Label fx:id="label5" prefHeight="31.0" prefWidth="48.0" text="Label" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="20.0">
+                                       <children>
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" stylesheets="@stock.css" text="  Pressure Level:">
+                                             <graphic>
+                                                <FontAwesomeIconView fill="WHITE" glyphName="CLOCK_ALT">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </FontAwesomeIconView>
+                                             </graphic>
+                                          </Button>
+                                                   <Label fx:id="label6" prefHeight="40.0" prefWidth="62.0" text="Label" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <Region minHeight="100.0" minWidth="100.0" HBox.hgrow="ALWAYS" />
+                                       <AreaChart id="chartArea" fx:id="chart1" stylesheets="@stock.css" title="Temperature Degree(C)" HBox.hgrow="SOMETIMES">
+                                           <xAxis>
+                                               <CategoryAxis side="BOTTOM" />
+                                           </xAxis>
+                                           <yAxis>
+                                               <NumberAxis side="LEFT" upperBound="110.0" />
+                                           </yAxis>
+                                       </AreaChart>
+                           </children>
+                        </HBox>
+                             </children>
+                         </AnchorPane>
+                     </content>
+                 </Tab>
+             </tabs>
+         </TabPane>
+   </center>
+</BorderPane>

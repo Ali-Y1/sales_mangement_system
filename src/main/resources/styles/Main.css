@@ -2,7 +2,7 @@
 
 .v-menu-button{
     -fx-text-fill: white;
-    -fx-background-color: linear-gradient(rgba(3, 189, 131, 0.94), #00a3e0);
+    -fx-background-color: linear-gradient(#13a7e0, rgba(206, 87, 197, 0.94));
     -fx-border-radius: 2px;
     -fx-border-width:  0.1px 0.1px 0.1px 0.1px;
     -fx-border-color: black;
