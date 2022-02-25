@@ -7,5 +7,6 @@ module com.example.salesmangement {
 
     opens Gui to javafx.fxml;
     opens order to javafx.base;
+    opens stock to javafx.fxml;
     exports Gui;
 }

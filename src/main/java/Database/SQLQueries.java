@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+import static stock.Stock.GetSupplier;
+
 public class SQLQueries {
     SQLDatabaseConnection con = new SQLDatabaseConnection();
     Connection connection;
@@ -175,10 +177,10 @@ public class SQLQueries {
         }
         return types;
     }
-    public HashMap<String, supplier> fetchSupplier() {
+    public HashMap<Integer, supplier> fetchSupplier() {
         connection = con.getConnection();
         supplier s;
-        HashMap<String,supplier> suppliers = new HashMap<String,supplier>();
+        HashMap<Integer,supplier> suppliers = new HashMap<Integer,supplier>();
         ResultSet resultSet= null;;
         try {
             Statement statement = connection.createStatement();
@@ -193,7 +195,7 @@ public class SQLQueries {
                 s.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
                 s.setEmail(resultSet.getString(3).trim().replaceAll(" +", " "));
                 s.setPhoneNumber(Integer.parseInt(resultSet.getString(4).trim().replaceAll(" +", " ")));
-                suppliers.put(s.getName(),s);
+                suppliers.put(s.getId(),s);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -217,7 +219,7 @@ public class SQLQueries {
                 p.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
                 p.setAmount(Integer.parseInt(resultSet.getString(3).trim().replaceAll(" +", " ")));
                 p.setPrice((int)Float.parseFloat(resultSet.getString(4).trim().replaceAll(" +", " ")));
-                p.setSup(fetchSupbyId(Integer.parseInt(resultSet.getString(5).trim().replaceAll(" +", " "))));
+                p.setSup(GetSupplier(Integer.parseInt(resultSet.getString(5).trim().replaceAll(" +", " "))));
 
                 Products.add(p);
             }
@@ -226,28 +228,6 @@ public class SQLQueries {
         }
         return Products;
     }
-    public supplier fetchSupbyId(int id){
-        connection = con.getConnection();
-        supplier s = new supplier();
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = null;
 
-            // Create and execute a SELECT SQL statement.
-            String selectSql = "SELECT * from supplier where id = " + id;
-            resultSet = statement.executeQuery(selectSql);
-
-            // Print results from select statement
-            if (resultSet.next()) {
-                s.setId(id);
-                s.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
-                s.setPhoneNumber(Integer.parseInt(resultSet.getString(4).trim().replaceAll(" +", " ")));
-                s.setEmail(resultSet.getString(3).trim().replaceAll(" +", " "));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return s;
-    }
 
 }

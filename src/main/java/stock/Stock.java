@@ -14,7 +14,7 @@ import java.util.List;
 //hashmap impl for products
 public class Stock {
     SQLQueries s = new SQLQueries();
-    private static HashMap<String,supplier> Supplier ;
+    private static HashMap<Integer,supplier> Supplier ;
     private ArrayList<Type> Types ;
 
     @Override
@@ -36,7 +36,7 @@ public class Stock {
          }
          return Types;
      }
-    public  supplier GetSupplier(String SupName) {
-         return    Supplier.get(SupName);
+    public static supplier GetSupplier(int id) {
+         return    Supplier.get(id);
     }
      }
