@@ -1,39 +1,42 @@
 package stock;
+import Database.SQLQueries;
+import javafx.collections.ObservableList;
 
-//  @Override
-//  public void start(Stage stage) throws IOException {
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-/**
- * FXMLLoader fxmlLoader = new FXMLLoader(StockApp.class.getResource("view.fxml"));
- * Scene scene = new Scene(fxmlLoader.load(), 320, 240);
- * stage.setTitle("Stock");
- * stage.setScene(scene);
- * stage.show();
- **/
+
 //flyweight design pattern for products and supplier
-//mvc stock
+
 //if there is weakness in products notifyObs manag .
 //GetProduct(); searches hashmap for products with product name as parameter and returns it.
 //hashmap impl for products
 public class Stock {
-private static final HashMap product = new HashMap();
+    SQLQueries s = new SQLQueries();
+    private static HashMap<String,supplier> Supplier ;
+    private ArrayList<Type> Types ;
 
-public Products GetProduct(String ProductName){
-    Products prod=(Products)product.get(ProductName);
-    if (prod==null){
-        prod = new Products();
-        product.put(ProductName,prod);
-        System.out.println("Creating a new product : "+ prod);
+    @Override
+    public String toString() {
+        return "Stock{" +
+                ", Types=" + Types +
+                " ,supplier" + Supplier+
+                '}';
     }
-    return prod;
-}
 
-}
-
-
-
-   /** public static void main(String[] args) {
-        launch();
-    }**/
+    Stock(){
+        System.out.println("test");
+       Supplier=s.fetchSupplier();
+       Types=s.fetchTypes();
+    }
+     public  List<Type> GetTypes() {
+         if (Types == null) {
+             //  Types=FETCHTYPES();
+         }
+         return Types;
+     }
+    public  supplier GetSupplier(String SupName) {
+         return    Supplier.get(SupName);
+    }
+     }

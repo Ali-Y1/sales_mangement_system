@@ -49,5 +49,13 @@ public class  StockProducts {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "StockProducts{" +
+                "Name='" + Name + '\'' +
+                ", Price=" + Price +
+                ", Amount=" + Amount +
+                ", sup=" + sup +
+                '}';
+    }
 }

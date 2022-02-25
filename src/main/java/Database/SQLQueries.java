@@ -166,6 +166,8 @@ public class SQLQueries {
             while(resultSet.next()){
                 type = new Type();
                 type.setName(resultSet.getString(1).trim().replaceAll(" +", " "));
+                for(StockProducts p :fetchStockProducts(type.getName()))
+                    type.addProduct(p);
                 types.add(type);
             }
         } catch (SQLException e) {
@@ -206,7 +208,7 @@ public class SQLQueries {
             Statement statement = connection.createStatement();
 
             // Create and execute a SELECT SQL statement.
-            String selectSql = "SELECT * from StockProducts where type =" + type;
+            String selectSql = "SELECT * from StockProducts where type = '" + type + "'";
             resultSet = statement.executeQuery(selectSql);
 
 
@@ -214,8 +216,8 @@ public class SQLQueries {
                 StockProducts p= new StockProducts();
                 p.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
                 p.setAmount(Integer.parseInt(resultSet.getString(3).trim().replaceAll(" +", " ")));
-                p.setPrice(Integer.parseInt(resultSet.getString(4).trim().replaceAll(" +", " ")));
-                //p.setSup(resultSet.getString(5).trim().replaceAll(" +", " "));
+                p.setPrice((int)Float.parseFloat(resultSet.getString(4).trim().replaceAll(" +", " ")));
+                p.setSup(fetchSupbyId(Integer.parseInt(resultSet.getString(5).trim().replaceAll(" +", " "))));
 
                 Products.add(p);
             }
@@ -223,6 +225,29 @@ public class SQLQueries {
             e.printStackTrace();
         }
         return Products;
+    }
+    public supplier fetchSupbyId(int id){
+        connection = con.getConnection();
+        supplier s = new supplier();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = null;
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "SELECT * from supplier where id = " + id;
+            resultSet = statement.executeQuery(selectSql);
+
+            // Print results from select statement
+            if (resultSet.next()) {
+                s.setId(id);
+                s.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
+                s.setPhoneNumber(Integer.parseInt(resultSet.getString(4).trim().replaceAll(" +", " ")));
+                s.setEmail(resultSet.getString(3).trim().replaceAll(" +", " "));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return s;
     }
 
 }
