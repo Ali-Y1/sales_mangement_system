@@ -3,6 +3,7 @@ package Gui;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -15,6 +16,7 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 900, 500);
         stage.setTitle("Hello!");
         stage.initStyle(StageStyle.UNDECORATED);
+        stage.getIcons().add(new Image(Main.class.getResourceAsStream("img/sales-removebg-preview.png")));
         stage.setScene(scene);
         stage.show();
     }

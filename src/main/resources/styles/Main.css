@@ -39,7 +39,7 @@
     -fx-text-fill:white ;
 }
 .menu-bar-v{
-    -fx-text-fill: white;
+    -fx-text-fill: #090808;
 
     -fx-background-color: linear-gradient(#0836a8,#5d3c75);
     -fx-effect: dropshadow( three-pass-box , rgba(43, 52, 128, 0.68), 5, 0.0 , 0 , 1 );
@@ -47,9 +47,23 @@
 .menu-button{
     -fx-text-fill: white;
 }
-.menu{
-    -fx-text-fill: white;
+.menu-bar .menu-item .label{
+    -fx-text-fill: #0a0a0a;
 }
 .pan{
     -fx-background-color: #CACFD6;
+}
+
+.text-area{
+    -fx-background-color: #CACFD6;
+}
+.text-area .scroll-bar{
+    -fx-background-color: #5d3c75;
+}
+.text-area .scroll-bar:horizontal .thumb,
+.text-area .scroll-bar:vertical .thumb {
+    -fx-background-color:derive( #5d3c75,90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+
 }

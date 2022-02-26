@@ -4,23 +4,26 @@ import Database.SQLQueries;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import order.OrderInfo;
 import order.customer;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class OrderController {
     private SQLQueries query=new SQLQueries();
@@ -135,6 +138,44 @@ public class OrderController {
             return row ;
         });
     }
+    public void writeExcel(ActionEvent event) throws Exception {
+        Writer writer = null ;
+        try {
+            FileChooser fileChooser = new FileChooser();
 
+            //Set extension filter for text files
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files (*.CSV)", "*.csv");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            //Show save file dialog
+            File file = fileChooser.showSaveDialog((Stage) ((Node) event.getSource()).getScene().getWindow());
+
+            if (file != null) {
+                //File file = new File("D:\\test1.csv.");
+                writer = new BufferedWriter(new FileWriter(file));
+                String text = "Id,Customer First Name ,Last Name ,Phone number , Email , Address , Price , Status ,Products ,,,,,,, \n";
+                writer.write(text);
+                for (OrderInfo order : orders) {
+                    AtomicReference<String> orderPr = new AtomicReference<>("");
+                    AtomicInteger x = new AtomicInteger(1);
+                    order.getProducts().stream().forEach((product) -> {
+                        orderPr.updateAndGet(v -> v + "Product" + x + ":" + product);
+                        x.getAndIncrement();
+                    });
+
+                    text = order.getId() + "," + order.getC().getFnName() + "," + order.getC().getLnName() + "," + order.getC().getPhone() + "," + order.getC().getEmail() + "," + order.getC().getAddress() + "," + order.getPrice() + "," + order.getStatus() + "," + orderPr + "\n";
+
+                    writer.write(text);
+                }
+            }
+            } catch(Exception ex){
+                ex.printStackTrace();
+            }
+        finally{
+
+                writer.flush();
+                writer.close();
+            }
+        }
 
 }

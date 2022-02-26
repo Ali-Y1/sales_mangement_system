@@ -36,7 +36,7 @@
                <HBox.margin>
                   <Insets />
                </HBox.margin></Region>
-            <Button mnemonicParsing="false" prefHeight="16.0" prefWidth="82.0" text="Export" textFill="#5d3c75">
+            <Button mnemonicParsing="false" onAction="#writeExcel" prefHeight="16.0" prefWidth="82.0" text="Export" textFill="#5d3c75">
                <graphic>
                   <FontAwesomeIconView fill="#5d3c75" glyphName="UPLOAD" />
                </graphic>

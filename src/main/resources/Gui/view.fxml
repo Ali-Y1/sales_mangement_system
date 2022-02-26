@@ -10,6 +10,7 @@
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -23,7 +24,7 @@
                <graphic>
                   <ImageView accessibleRole="BUTTON" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#orderButtonClick" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@3099883.JPG" />
+                        <Image url="@img/3099883.JPG" />
                      </image>
                   </ImageView>
                </graphic>
@@ -35,7 +36,7 @@
                <graphic>
                   <ImageView accessibleRole="BUTTON" fitHeight="22.0" fitWidth="21.0" onMouseClicked="#stockButtonClick" pickOnBounds="true" preserveRatio="true" styleClass="v-menu-button">
                      <image>
-                        <Image url="@stock.png" />
+                        <Image url="@img/stock.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -47,7 +48,7 @@
                <graphic>
                   <ImageView accessibleRole="BUTTON" fitHeight="22.0" fitWidth="17.0" onMouseClicked="#invoiceButtonClick" pickOnBounds="true" preserveRatio="true" styleClass="v-menu-button">
                      <image>
-                        <Image url="@invoice.png" />
+                        <Image url="@img/invoice.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -59,30 +60,22 @@
       </VBox>
    </left>
    <center>
-      <VBox fx:id="panel" alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="panel">
          <children>
-            <Label alignment="CENTER" text="Welcome" />
+            <Label alignment="CENTER" text="Welcome" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
-      </VBox>
+      </AnchorPane>
    </center>
    <top>
       <HBox alignment="TOP_RIGHT" onMouseClicked="#pressed" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="12.0" prefWidth="600.0" styleClass="menu-bar3" BorderPane.alignment="TOP_RIGHT">
          <children>
             <MenuBar onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="25.0" prefWidth="531.0">
               <menus>
-                <Menu text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
+                <Menu text="File" />
+                <Menu mnemonicParsing="false" text="Edit" />
                 <Menu mnemonicParsing="false" text="Help">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem mnemonicParsing="false" onAction="#AboutBtClicked" text="About" />
                   </items>
                 </Menu>
               </menus>

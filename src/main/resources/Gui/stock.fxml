@@ -10,36 +10,55 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stock.StockController">
-   <center>
-         <TabPane tabClosingPolicy="UNAVAILABLE">
+<VBox stylesheets="@../styles/order.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.StockController">
+   <children>
+      <HBox>
+         <children>
+            <Label text="Stock:">
+               <font>
+                  <Font name="Microsoft New Tai Lue" size="21.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" styleClass="createBT" text="Add To Stock">
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <TextField promptText="Search">
+         <VBox.margin>
+            <Insets top="3.0" />
+         </VBox.margin>
+      </TextField>
+         <TabPane stylesheets="@../styles/order.css" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
              <tabs>
                  <Tab text="View Stock">
                      <content>
                          <AnchorPane minHeight="0.0" minWidth="0.0">
                              <children>
-                                 <TableView layoutX="68.0" layoutY="30.0" prefHeight="90.0" prefWidth="145.0">
-                                     <columns>
-                                         <TableColumn prefWidth="75.0" text="C1" />
-                                         <TableColumn prefWidth="75.0" text="C2" />
-                                     </columns>
-                                 </TableView>
-                                 <Text layoutX="742.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="94.13671875" />
+                        <TreeTableView fx:id="tr" styleClass="table-view" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TreeTableColumn fx:id="name" prefWidth="75.0" text="Name" />
+                            <TreeTableColumn fx:id="price" prefWidth="75.0" text="Price" />
+                              <TreeTableColumn fx:id="amount" prefWidth="75.0" text="Amount" />
+                              <TreeTableColumn fx:id="supplier" prefWidth="75.0" text="Supplier" />
+                          </columns>
+                        </TreeTableView>
                              </children>
    
-                                                    </AnchorPane>
+                                                          </AnchorPane>
                      </content>
                  </Tab>
                  <Tab text="InventoryCondition">
@@ -53,7 +72,7 @@
                                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temperature:" wrappingWidth="134.13671875" />
                                     <HBox spacing="20.0">
                                        <children>
-                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" stylesheets="@stock.css" text="Check Temperature (C):">
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" stylesheets="@../styles/stock.css" text="Check Temperature (C):">
                                                        <cursor>
                                                            <Cursor fx:constant="DEFAULT" />
                                                        </cursor>
@@ -63,7 +82,7 @@
                                     </HBox>
                                     <HBox spacing="20.0">
                                        <children>
-                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="178.0" stylesheets="@stock.css" text="Temperature Level:">
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="178.0" stylesheets="@../styles/stock.css" text="Temperature Level:">
                                                        <effect>
                                                            <SepiaTone />
                                                        </effect>
@@ -74,27 +93,27 @@
                                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Humidity" wrappingWidth="131.13671875" />
                                     <HBox spacing="20.0">
                                        <children>
-                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="153.0" stylesheets="@stock.css" text="Check Humidity (%):" />
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="153.0" stylesheets="@../styles/stock.css" text="Check Humidity (%):" />
                      
-                                                                                    <Label fx:id="label3" prefHeight="31.0" prefWidth="50.0" text="Label" />
+                                                                                          <Label fx:id="label3" prefHeight="31.0" prefWidth="50.0" text="Label" />
                                        </children>
                                     </HBox>
                                     <HBox spacing="20.0">
                                        <children>
-                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0" stylesheets="@stock.css" text="Humidity Level:" />
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="129.0" stylesheets="@../styles/stock.css" text="Humidity Level:" />
                                                    <Label fx:id="label4" prefHeight="32.0" prefWidth="51.0" text="Label" />
                                        </children>
                                     </HBox>
                                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pressure" />
                                     <HBox spacing="20.0">
                                        <children>
-                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" stylesheets="@stock.css" text="Check Pressure (kPa):" />
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" stylesheets="@../styles/stock.css" text="Check Pressure (kPa):" />
                                                    <Label fx:id="label5" prefHeight="31.0" prefWidth="48.0" text="Label" />
                                        </children>
                                     </HBox>
                                     <HBox spacing="20.0">
                                        <children>
-                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" stylesheets="@stock.css" text="  Pressure Level:">
+                                                   <Button id="Button" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" stylesheets="@../styles/stock.css" text="  Pressure Level:">
                                              <graphic>
                                                 <FontAwesomeIconView fill="WHITE" glyphName="CLOCK_ALT">
                                                    <font>
@@ -112,7 +131,7 @@
                                  </HBox.margin>
                               </VBox>
                               <Region minHeight="100.0" minWidth="100.0" HBox.hgrow="ALWAYS" />
-                                       <AreaChart id="chartArea" fx:id="chart1" stylesheets="@stock.css" title="Temperature Degree(C)" HBox.hgrow="SOMETIMES">
+                                       <AreaChart id="chartArea" fx:id="chart1" stylesheets="@../styles/stock.css" title="Temperature Degree(C)">
                                            <xAxis>
                                                <CategoryAxis side="BOTTOM" />
                                            </xAxis>
@@ -127,6 +146,12 @@
                      </content>
                  </Tab>
              </tabs>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
          </TabPane>
-   </center>
-</BorderPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" />
+   </padding>
+</VBox>

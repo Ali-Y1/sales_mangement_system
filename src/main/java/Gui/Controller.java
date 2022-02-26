@@ -5,22 +5,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import stock.StockController;
 
 import java.io.IOException;
 
 public class Controller{
     @FXML
-    private VBox panel;
-
+    private AnchorPane panel;
 
 
     double x,y;
@@ -32,6 +25,12 @@ public class Controller{
         Parent fxmlLoader = FXMLLoader.load(Main.class.getResource("orders.fxml"));
         panel.getChildren().removeAll();
         panel.getChildren().setAll(fxmlLoader);
+        panel.getChildren().stream().forEach((child) -> {
+            panel.setBottomAnchor(child,0.0);
+            panel.setTopAnchor(child,0.0);
+            panel.setLeftAnchor(child,0.0);
+            panel.setRightAnchor(child,0.0);
+        });
 
 
     }
@@ -57,13 +56,37 @@ public class Controller{
         Parent fxmlLoader = FXMLLoader.load(Main.class.getResource("stock.fxml"));
         panel.getChildren().removeAll();
         panel.getChildren().setAll(fxmlLoader);
+        panel.getChildren().stream().forEach((child) -> {
+            panel.setBottomAnchor(child,0.0);
+            panel.setTopAnchor(child,0.0);
+            panel.setLeftAnchor(child,0.0);
+            panel.setRightAnchor(child,0.0);
+        });
     }
     @FXML
     protected void invoiceButtonClick() throws IOException {
         Parent fxmlLoader = FXMLLoader.load(Main.class.getResource("invoice.fxml"));
         panel.getChildren().removeAll();
         panel.getChildren().setAll(fxmlLoader);
+        panel.getChildren().stream().forEach((child) -> {
+            panel.setBottomAnchor(child,0.0);
+            panel.setTopAnchor(child,0.0);
+            panel.setLeftAnchor(child,0.0);
+            panel.setRightAnchor(child,0.0);
+        });
 
+    }
+    @FXML
+    protected void AboutBtClicked() throws IOException {
+        Parent fxmlLoader = FXMLLoader.load(Main.class.getResource("About.fxml"));
+        panel.getChildren().removeAll();
+        panel.getChildren().setAll(fxmlLoader);
+        panel.getChildren().stream().forEach((child) -> {
+            panel.setBottomAnchor(child,0.0);
+            panel.setTopAnchor(child,0.0);
+            panel.setLeftAnchor(child,0.0);
+            panel.setRightAnchor(child,0.0);
+        });
     }
     @FXML
     void dragged(MouseEvent event) {

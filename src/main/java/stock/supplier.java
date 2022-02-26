@@ -1,5 +1,6 @@
 package stock;
 public class supplier {
+
     public int getId() {
         return id;
     }
@@ -13,13 +14,12 @@ public class supplier {
     }
 
     private int id;
-    private String name,email;
+    private String name="",email="";
     private int PhoneNumber;
 
-    public void supplier(){
-
+    public supplier(){
     }
-    public void supplier(String StockName , int PhoneNumber,String email){
+    supplier(String StockName , int PhoneNumber,String email){
         name=StockName;
         this.email=email;
         this.PhoneNumber=PhoneNumber;

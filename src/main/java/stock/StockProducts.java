@@ -5,7 +5,7 @@ public class  StockProducts {
     private String Name;
     private int Price;
     private int Amount;
-    supplier sup;
+    private supplier sup;
     //discount
 
     public void setName(String name) {

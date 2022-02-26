@@ -15,7 +15,7 @@ import java.util.List;
 public class Stock {
     SQLQueries s = new SQLQueries();
     private static HashMap<Integer,supplier> Supplier ;
-    private ArrayList<Type> Types ;
+    private static ArrayList<Type> Types ;
 
     @Override
     public String toString() {
@@ -25,18 +25,14 @@ public class Stock {
                 '}';
     }
 
-    Stock(){
-        System.out.println("test");
-       Supplier=s.fetchSupplier();
-       Types=s.fetchTypes();
-    }
-     public  List<Type> GetTypes() {
-         if (Types == null) {
-             //  Types=FETCHTYPES();
-         }
+     public ArrayList<Type> GetTypes() {
+        if(Types == null)
+            Types=s.fetchTypes();
          return Types;
      }
-    public static supplier GetSupplier(int id) {
-         return    Supplier.get(id);
+    public supplier GetSupplier(int id) {
+        if(Supplier == null)
+            Supplier=s.fetchSupplier();
+        return Supplier.get(id);
     }
-     }
+}

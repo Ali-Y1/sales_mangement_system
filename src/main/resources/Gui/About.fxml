@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea editable="false" styleClass="text-area" stylesheets="@../styles/Main.css" text="Product Version&#10;Sales Mangment Version 1.0 &#10;&#10;Build Information&#10;Date: 2022-03-1&#10;JavaFX Version: 17&#10;Java Version: 17, OpenJDK Runtime Environment&#10;&#10;Java&#10;17+35-2724, Oracle Corporation&#10;&#10;This software is made by the effort of our team:&#10;-Ali Youssef&#10;-Daniel Fadel&#10;-Hassan Bazzi&#10;-Hussien abdallah&#10;-Khoder mahdi&#10;-Mohamad ali&#10;&#10;Copyright (c) 2022-2021.&#10;All rights reserved. Use is subject to license terms.&#10;&#10;This file is available and licensed under the following license:&#10;&#10;Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:&#10;&#10; - Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.&#10; - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.&#10;&#10;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, &#10;INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.&#10; IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, &#10;OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) &#10;HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)&#10; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." VBox.vgrow="ALWAYS">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font>
+      </TextArea>
+   </children>
+</VBox>

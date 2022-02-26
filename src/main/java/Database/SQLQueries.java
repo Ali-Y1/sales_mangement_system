@@ -6,6 +6,7 @@ import order.OrderInfo;
 import order.Orders;
 import order.customer;
 import order.product;
+import stock.Stock;
 import stock.StockProducts;
 import stock.Type;
 import stock.supplier;
@@ -22,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-import static stock.Stock.GetSupplier;
 
 public class SQLQueries {
     SQLDatabaseConnection con = new SQLDatabaseConnection();
@@ -212,14 +212,13 @@ public class SQLQueries {
             // Create and execute a SELECT SQL statement.
             String selectSql = "SELECT * from StockProducts where type = '" + type + "'";
             resultSet = statement.executeQuery(selectSql);
-
-
+            Stock s = new Stock();
             while(resultSet.next()){
                 StockProducts p= new StockProducts();
                 p.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
                 p.setAmount(Integer.parseInt(resultSet.getString(3).trim().replaceAll(" +", " ")));
                 p.setPrice((int)Float.parseFloat(resultSet.getString(4).trim().replaceAll(" +", " ")));
-                p.setSup(GetSupplier(Integer.parseInt(resultSet.getString(5).trim().replaceAll(" +", " "))));
+                p.setSup(s.GetSupplier(Integer.parseInt(resultSet.getString(5).trim().replaceAll(" +", " "))));
 
                 Products.add(p);
             }
