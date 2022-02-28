@@ -20,7 +20,7 @@
                <children>
                   <ImageView fitHeight="108.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@invoice.png" />
+                        <Image url="@img/invoice2.png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" layoutX="131.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome " textAlignment="CENTER" wrappingWidth="120.06329345703125">

@@ -11,6 +11,8 @@ module com.example.salesmangement {
     opens order to javafx.base;
     opens stock to javafx.fxml;
     opens invoice to javafx.fxml;
+    opens login to javafx.fxml;
     exports Gui;
     exports invoice;
+    exports login;
 }
