@@ -3,24 +3,33 @@ package Gui;
 
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
-import javafx.scene.control.Label;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import order.OrderInfo;
 import stock.Stock;
 import stock.StockProducts;
 import stock.Type;
 
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class StockController {
@@ -48,11 +57,11 @@ public class StockController {
 
     @FXML
     public void initialize() {
-        StockController();
+        StockControllers();
         tree();
     }
 
-    private void StockController(){
+    private void StockControllers(){
         Series<String, Number> series = new Series<>();
         series.setName("Temperature Variation");
         chart1.getData().add(series);
@@ -111,15 +120,99 @@ public class StockController {
         TreeItem All = new TreeItem(new Type());
         s.GetTypes().stream().forEach((type) -> {
             TreeItem t = new TreeItem<StockProducts>(type);
+
             type.getProductList().stream().forEach((product) ->{t.getChildren().add(new TreeItem(product));});
             All.getChildren().add(t);
             });
         All.setExpanded(true);
         tr.setShowRoot(false);
         tr.setRoot(All);
+        tr.setRowFactory((tv) -> {
+            TreeTableRow<StockProducts> row = new TreeTableRow<>();
+                row.setOnMouseClicked((event) -> {
+                    if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                        StockProducts r = row.getItem();
+                        if(r instanceof Type){
+
+                        }else{
+                            try {
+                                Stage window = new Stage();
+
+                                window.initModality(Modality.APPLICATION_MODAL);
+                                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AddStock.fxml"));
+                                AddStockController AddController = new AddStockController(r,row.getTreeItem().getParent().getValue().getName());
+
+                                fxmlLoader.setController(AddController);
+                                Scene scene = new Scene(fxmlLoader.load(), 720, 440);
+                                window.initStyle(StageStyle.UNDECORATED);
+                                window.setScene(scene);
+                                window.showAndWait();
+                                tree();
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                        System.out.println(row.getItem());
+                    }
+                });
+            return row;
+        });
 
     }
 
 
+    public void writeExcel(ActionEvent event) throws Exception {
+        Stock s = new Stock();
+        Writer writer = null ;
+        try {
+            FileChooser fileChooser = new FileChooser();
+
+            //Set extension filter for text files
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files (*.CSV)", "*.csv");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            //Show save file dialog
+            File file = fileChooser.showSaveDialog((Stage) ((Node) event.getSource()).getScene().getWindow());
+
+            if (file != null) {
+                //File file = new File("D:\\test1.csv.");
+                writer = new BufferedWriter(new FileWriter(file));
+                String text = "Name , Price ,Amount ,Supplier-Id,Supplier-Name,Supplier-Email \n";
+                writer.write(text);
+                for (Type type : s.GetTypes()) {
+                    AtomicReference<String> Pr = new AtomicReference<>("");
+                    AtomicInteger x = new AtomicInteger(1);
+                    type.getProductList().stream().forEach((product) -> {
+                        Pr.updateAndGet(v -> v + product);
+                        x.getAndIncrement();
+                    });
+
+                    text = type.getName()+ ":\n" + Pr + "\n";
+
+                    writer.write(text);
+                }
+            }
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+        finally{
+
+            writer.flush();
+            writer.close();
+        }
+    }
+
+    public void AddStock() throws IOException {
+        Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AddStock.fxml"));
+        AddStockController AddController = new AddStockController();
+        fxmlLoader.setController(AddController);
+        Scene scene = new Scene(fxmlLoader.load(), 720, 440);
+        window.initStyle(StageStyle.UNDECORATED);
+        window.setScene(scene);
+        window.showAndWait();
+        tree();
+    }
 }
 

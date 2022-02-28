@@ -12,6 +12,14 @@ public class OrderDetails {
     private LocalDateTime Date;
     private SQLQueries query;
 
+    public String getDetails() {
+        return Details;
+    }
+
+    public LocalDateTime getDate() {
+        return Date;
+    }
+
     public OrderDetails(String details) {
         Date = LocalDateTime.now();
         Details = details;

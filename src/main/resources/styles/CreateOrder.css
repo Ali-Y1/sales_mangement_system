@@ -1,0 +1,76 @@
+.HBox1{
+    -fx-border-width: 1px 0px 1px 0px;
+    -fx-border-color: #9A9A9A;
+}
+.button{
+    -fx-text-fill: #5d3c75;
+    -fx-border-radius: 1px;
+}
+
+/*Table style*/
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color:  #5d3c75;
+}
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+.table-view .cell{
+    -fx-cell-size: 35;
+    -fx-alignment: center-left;
+    -fx-background-color: #c0c0c2;
+    -fx-border-color: #c0c0c2;
+    -fx-text-fill: #100f0f;
+    -fx-alignment: CENTER_LEFT;
+}
+.table-row-cell:selected {
+    -fx-background-color: #5d3c75;
+    -fx-text-background-color:  #5d3c75;
+}
+/* The increment and decrement button CSS class of scrollbar */
+.table-view .increment-button ,.table-view .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 2em;
+}
+/* The main scrollbar **track** CSS class  */
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color:derive( #5d3c75,80%);
+    -fx-background-radius: 2em;
+    -fx-border-radius:2em;
+}
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color:derive( #5d3c75,90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+}
+.table-view {
+    -fx-border-width: 0px;
+}
+.totalPrice{
+    -fx-background-color: #969696;
+}
+
+
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: #5d3c75;
+    -fx-border-radius: 15;
+    -fx-padding: 0;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+.check-box:selected .box {
+    -fx-background-color: #5d3c75;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-padding: 0;
+}

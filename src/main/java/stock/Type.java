@@ -1,6 +1,5 @@
 package stock;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Type extends StockProducts{
 
@@ -11,15 +10,6 @@ public class Type extends StockProducts{
         return ProductList;
     }
 
-    @Override
-    public int getPrice() {
-        return 0;
-    }
-
-    @Override
-    public int getAmount() {
-        return 0;
-    }
 
     @Override
     public supplier getSup() {

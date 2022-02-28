@@ -19,7 +19,7 @@ public class supplier {
 
     public supplier(){
     }
-    supplier(String StockName , int PhoneNumber,String email){
+    public supplier(String StockName, int PhoneNumber, String email){
         name=StockName;
         this.email=email;
         this.PhoneNumber=PhoneNumber;

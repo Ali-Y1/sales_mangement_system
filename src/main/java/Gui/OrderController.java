@@ -20,8 +20,11 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import order.OrderInfo;
 import order.customer;
+import order.product;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -47,9 +50,20 @@ public class OrderController {
     //other fields
     @FXML private TextField search;
 
+    private static HashMap<String,product> products;
+
+    public static HashMap<String, product> getProducts() {
+        return products;
+    }
+
+    public static product getProduct(String name) {
+        return products.get(name);
+    }
+
     @FXML
     public void initialize() {
         orders = query.fetchOrders();
+        products = query.fetchAllProduct();
         IdCol.setCellValueFactory(new PropertyValueFactory<OrderInfo, Integer>("id"));
         StatusCol.setCellValueFactory(new PropertyValueFactory<OrderInfo, String>("status"));
         PriceCol.setCellValueFactory(new PropertyValueFactory<OrderInfo, String>("price"));
@@ -68,7 +82,7 @@ public class OrderController {
                         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("viewOrder.fxml"));
                         VieworderController vieworder = new VieworderController(rowData);
                         fxmlLoader.setController(vieworder);
-                        Scene scene = new Scene(fxmlLoader.load(), 720, 460);
+                        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
                         window.initStyle(StageStyle.UNDECORATED);
                         window.setScene(scene);
                         window.showAndWait();
@@ -84,7 +98,13 @@ public class OrderController {
     }
 @FXML
     public void create() throws IOException {
-
+        Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("CreateOrder.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+        window.initStyle(StageStyle.UNDECORATED);
+        window.setScene(scene);
+        window.show();
     }
     @FXML
     public void searchOrders(){
@@ -138,6 +158,7 @@ public class OrderController {
             return row ;
         });
     }
+
     public void writeExcel(ActionEvent event) throws Exception {
         Writer writer = null ;
         try {

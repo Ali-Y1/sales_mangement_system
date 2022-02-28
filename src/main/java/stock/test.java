@@ -1,10 +1,10 @@
 package stock;
 
+import Database.SQLQueries;
+
 public class test {
     public static void main(String[] args){
-        Stock s = new Stock();
-        s.GetSupplier(1);
-        s.GetTypes();
-        System.out.println(s);
+        SQLQueries q = new SQLQueries();
+        q.Addsupplier(new supplier("daniel",78654456,"no"));
     }
 }

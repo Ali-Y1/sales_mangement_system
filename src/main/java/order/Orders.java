@@ -2,6 +2,7 @@ package order;
 
 
 import Database.SQLQueries;
+import javafx.fxml.FXML;
 
 import java.text.DateFormat;
 
@@ -9,6 +10,15 @@ public abstract class Orders {
     customer c;
     OrderDetails od;
     status s;
+
+    public customer getC() {
+        return c;
+    }
+
+    public OrderDetails getOd() {
+        return od;
+    }
+
     //discount,VTA design pattern visitor / singlton for database
     public customer setCustomer(String FnName, String LnName, String email, String Address, int phone) {
         checkCustomer cC = new checkCustomer();
@@ -38,5 +48,6 @@ public abstract class Orders {
         }
 
     }
+
 
 }

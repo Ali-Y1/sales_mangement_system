@@ -3,44 +3,49 @@ package stock;
 public class  StockProducts {
 
     private String Name;
-    private int Price;
-    private int Amount;
+    private String Price="";
+    private String Amount="";
     private supplier sup;
+
+
     //discount
+
+    public StockProducts(){
+
+    }
+    public  StockProducts(String name, int Price, int Amount, supplier sup) {
+    this.Name=name;
+    this.sup = sup;
+    this.Amount = String.valueOf(Amount);
+    this.Price = String.valueOf(Price);
+}
 
     public void setName(String name) {
         Name = name;
     }
 
     public void setPrice(int price) {
-        Price = price;
+        Price = String.valueOf(price);
     }
 
     public void setAmount(int amount) {
-        Amount = amount;
+        Amount = String.valueOf(amount);
     }
 
     public void setSup(supplier sup) {
         this.sup = sup;
     }
 
-    public void StockProducts(String name, int Price, int Amount, supplier sup) {
-    this.Name=name;
-    this.sup = sup;
-    this.Amount = Amount;
-    this.Price = Price;
-}
-
 
     public String getName() {
         return Name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return Price;
     }
 
-    public int getAmount() {
+    public String getAmount() {
         return Amount;
     }
 
@@ -51,11 +56,7 @@ public class  StockProducts {
 
     @Override
     public String toString() {
-        return "StockProducts{" +
-                "Name='" + Name + '\'' +
-                ", Price=" + Price +
-                ", Amount=" + Amount +
-                ", sup=" + sup +
-                '}';
+        return  "   "+Name + ',' + Price + "," + Amount +
+                "," + sup.getId() + "," + sup.getName() + "," + sup.getEmail();
     }
 }

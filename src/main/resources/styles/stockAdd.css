@@ -1,0 +1,60 @@
+#HBOX1{
+-fx-background-color: #5d3c75;
+}
+#prodDetails{
+-fx-text-fill: white;
+}
+#HBOX2{
+-fx-background-color:  #f0ffff;
+}
+#HBOX3{
+-fx-background-color:  #f0ffff;
+}
+#NewType{
+-fx-background-color: #66cdaa;
+}
+
+#CANCEL{
+-fx-background-color: #5d3c75;
+}
+#CANCEL:hover{
+    -fx-background-color: #ce0000;
+}
+#SAVE{
+-fx-background-color: #5d3c75;
+}
+#SAVE:hover{
+    -fx-background-color: #010f34;
+}
+#Type{
+-fx-background-color:#ffd700;
+}
+#txt1{
+ -fx-background-color:#dcdcdc;
+}
+#txt2{
+   -fx-background-color:#dcdcdc;
+}
+#txt3{
+       -fx-background-color:#dcdcdc;
+}
+.VBox-s{
+-fx-background-radius: 20;
+-fx-background-color: #5d3c75;
+
+}
+#SAVE2 {
+
+-fx-background-color:#00fa9a;
+}
+#CANCEL2{
+-fx-background-color:#cd5c5c;}
+
+.text-field{
+    -fx-background-radius: 20;
+}
+
+.combo-box{
+    -fx-background-radius: 15;
+}
+

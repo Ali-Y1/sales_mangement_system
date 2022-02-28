@@ -65,7 +65,7 @@ public class Controller{
     }
     @FXML
     protected void invoiceButtonClick() throws IOException {
-        Parent fxmlLoader = FXMLLoader.load(Main.class.getResource("invoice.fxml"));
+        Parent fxmlLoader = FXMLLoader.load(Main.class.getResource("Invoices.fxml"));
         panel.getChildren().removeAll();
         panel.getChildren().setAll(fxmlLoader);
         panel.getChildren().stream().forEach((child) -> {
@@ -116,7 +116,7 @@ public class Controller{
         try {
             StockController.scheduledExecutorService.shutdownNow();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(" ");
         }
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();

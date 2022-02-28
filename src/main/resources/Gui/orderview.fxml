@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <AnchorPane prefHeight="219.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="114.0" prefWidth="600.0" style="-fx-background-color: #8000FF;">
+               <children>
+                  <ImageView fitHeight="108.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@invoice.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="131.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome " textAlignment="CENTER" wrappingWidth="120.06329345703125">
+                     <font>
+                        <Font name="Algerian" size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="322.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LU Store">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="322.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LU Store@gmail.com">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="479.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lebanon/Beirut">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="512.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="71564355">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <Text fill="#8000ff" layoutX="7.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :" wrappingWidth="52.423858642578125">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text fill="#8000ff" layoutX="-92.0" layoutY="-31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id :" x="100.0" y="200.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="addresvalue" fill="#8000ff" layoutX="2.0" layoutY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :" y="200.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text fill="#8000ff" layoutX="179.0" layoutY="-63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone :" y="200.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text fill="#8000ff" layoutX="183.0" layoutY="-57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" wrappingWidth="33.439453125" y="250.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Text>
+            <Text fill="#8000ff" layoutX="359.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Price :">
+               <font>
+                  <Font name="Goudy Old Style Bold" size="22.0" />
+               </font>
+            </Text>
+            <Label fx:id="namevalue" layoutX="71.0" layoutY="124.0" prefHeight="18.0" prefWidth="103.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label fx:id="idvalue" layoutX="71.0" layoutY="155.0" prefHeight="18.0" prefWidth="70.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label fx:id="addressvalue" layoutX="71.0" layoutY="187.0" prefHeight="18.0" prefWidth="81.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label fx:id="phonevalue" layoutX="241.0" layoutY="124.0" prefHeight="18.0" prefWidth="79.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label fx:id="datevalue" layoutX="241.0" layoutY="179.0" prefHeight="18.0" prefWidth="105.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label fx:id="pricevalue" layoutX="490.0" layoutY="148.0" prefHeight="18.0" prefWidth="102.0">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="176.0" prefWidth="601.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tableofproduct" layoutY="-252.0" prefHeight="405.0" prefWidth="600.0">
+              <columns>
+                <TableColumn fx:id="prname" prefWidth="239.2000396847725" text="Product Name" />
+                <TableColumn fx:id="amount" prefWidth="187.2000274658203" text="Amount" />
+                  <TableColumn fx:id="price" minWidth="0.0" prefWidth="173.60003662109375" text="Price" />
+              </columns>
+            </TableView>
+            <Button fx:id="cancelbtn" layoutY="164.0" mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="30.0" style="-fx-background-color: white;" textFill="#ff1313">
+               <graphic>
+                  <FontAwesomeIconView fill="RED" glyphName="CLOSE" selectionFill="#ff0e0e" size="50" />
+               </graphic></Button>
+            <Button fx:id="savepdf" layoutX="540.0" layoutY="164.0" mnemonicParsing="false" onAction="#savepdf" style="-fx-background-color: white;">
+               <graphic>
+                  <FontAwesomeIconView fill="#8000ff" glyphName="SAVE" size="50" text="" />
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

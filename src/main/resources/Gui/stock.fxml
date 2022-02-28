@@ -30,10 +30,19 @@
                   <Font name="Microsoft New Tai Lue" size="21.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" styleClass="createBT" text="Add To Stock">
+            <Button mnemonicParsing="false" onAction="#AddStock" styleClass="createBT" text="Add To Stock">
                <HBox.margin>
                   <Insets left="10.0" top="5.0" />
                </HBox.margin>
+            </Button>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#writeExcel" prefHeight="25.0" prefWidth="83.0" text="Export" textFill="#5d3c75">
+               <HBox.margin>
+                  <Insets right="7.0" top="7.0" />
+               </HBox.margin>
+               <graphic>
+                  <FontAwesomeIconView fill="#5d3c75" glyphName="UPLOAD" />
+               </graphic>
             </Button>
          </children>
       </HBox>

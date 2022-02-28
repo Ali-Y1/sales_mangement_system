@@ -31,8 +31,8 @@ public class product {
         return Price;
     }
 
-    public int getAmount() {
-        return Amount;
+    public String getAmount() {
+        return String.valueOf(Amount);
     }
 
     public product(String name, int price, int amount) {

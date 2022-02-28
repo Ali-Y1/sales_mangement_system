@@ -1,0 +1,20 @@
+#invoicestable{
+    -fx-background-radius:30;
+}
+
+#invoicestable .column-header-background{
+    -fx-background-color:#8000FF;
+    -fx-background-radius:30;
+    -fx-background-insets: 0 0 10 0;
+    -fx-padding:0 0  10 0;
+}
+
+#invoicestable .column-header, #invoicestable .filler{
+    -fx-size: 40;
+    -f-border-width:0 0 10 0;
+    -fx-background-color:transparent;
+}
+
+#invoicestable .column-header .label{
+    -fx-text-fill:white;
+}

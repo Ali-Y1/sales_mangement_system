@@ -1,10 +1,9 @@
 package stock;
 import Database.SQLQueries;
-import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 
 //flyweight design pattern for products and supplier
@@ -14,8 +13,17 @@ import java.util.List;
 //hashmap impl for products
 public class Stock {
     SQLQueries s = new SQLQueries();
-    private static HashMap<Integer,supplier> Supplier ;
+
+    public static HashMap<String, supplier> getSuppliers() {
+        return Supplier;
+    }
+
+    private static HashMap<String,supplier> Supplier ;
     private static ArrayList<Type> Types ;
+
+    public void refreshSupplier(){
+        Supplier=s.fetchSupplier();
+    }
 
     @Override
     public String toString() {
@@ -24,6 +32,11 @@ public class Stock {
                 " ,supplier" + Supplier+
                 '}';
     }
+    public void AddType(String TypeName){
+        Type t = new Type();
+        t.setName(TypeName);
+        Types.add(t);
+    }
 
      public ArrayList<Type> GetTypes() {
         if(Types == null)
@@ -31,6 +44,15 @@ public class Stock {
          return Types;
      }
     public supplier GetSupplier(int id) {
+        if(Supplier == null)
+            Supplier=s.fetchSupplier();
+        for(Map.Entry<String, supplier> s:Supplier.entrySet()){
+            if(s.getValue().getId() == id)
+                return s.getValue();
+        }
+        return null;
+    }
+    public supplier GetSupplier(String id) {
         if(Supplier == null)
             Supplier=s.fetchSupplier();
         return Supplier.get(id);

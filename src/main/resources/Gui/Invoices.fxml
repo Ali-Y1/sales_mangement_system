@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="invoice.Controller">
+    <center>
+        <TableView fx:id="invoicestable" prefHeight="304.0" prefWidth="502.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="cid" prefWidth="92.00006103515625" text="Customer Id" />
+                <TableColumn fx:id="cname" prefWidth="108.800048828125" text="Customer Name" />
+                <TableColumn fx:id="vdate" prefWidth="66.39996337890625" text="Date" />
+                <TableColumn fx:id="cpnumber" prefWidth="106.4000244140625" text="Phone Number" />
+                <TableColumn fx:id="caddress" prefWidth="88.0" text="Address" />
+                <TableColumn fx:id="tprice" prefWidth="71.20001220703125" text="Total Price" />
+            </columns>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <BorderPane.margin>
+                <Insets top="10.0" />
+            </BorderPane.margin>
+        </TableView>
+    </center>
+    <stylesheets>
+        <URL value="@invoices.css" />
+    </stylesheets>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <top>
+      <TextField fx:id="searchf" promptText="Serach" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <Label fx:id="ijj" prefHeight="18.0" prefWidth="106.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

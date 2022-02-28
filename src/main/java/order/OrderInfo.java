@@ -1,5 +1,7 @@
 package order;
 
+import Database.SQLQueries;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -8,14 +10,20 @@ public class OrderInfo {
     //order class for customer and the order details
 
 
-    private int id;
+    private static int id=-1;
     private String Details;
     private float price;
     private String status;
     private String Date;
     private ArrayList<product> products = new ArrayList<product>();
     private customer c;
-
+    SQLQueries q = new SQLQueries();
+    public OrderInfo(){
+        if(id == -1){
+            id=q.getLastOrderId();
+        }else
+            id++;
+    }
     public ArrayList<product> getProducts() {
         return products;
     }
@@ -23,12 +31,20 @@ public class OrderInfo {
     public void AddProduct(order.product product) {
        products.add(product);
     }
+    public String getParsedProduct(){
+        String str="";
+        for(product pt : products){
+            str= pt.getName() + '@' + pt.getPrice()+ '@' + pt.getAmount() + '#';
+        }
+        return str;
+    }
     public void parseProduct(String productString){
 
         for(String product : productString.split("#")){
-            String[] p = product.split("@");
-                AddProduct(new product(p[0],Integer.parseInt(p[1]),Integer.parseInt(p[2].trim().replaceAll(" +", " "))));
-
+            if(!product.trim().equals("")) {
+                String[] p = product.split("@");
+                AddProduct(new product(p[0], Integer.parseInt(p[1]), Integer.parseInt(p[2].trim().replaceAll(" +", " "))));
+            }
         }
 
     }

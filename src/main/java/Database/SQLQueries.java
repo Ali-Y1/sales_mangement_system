@@ -3,7 +3,6 @@ package Database;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import order.OrderInfo;
-import order.Orders;
 import order.customer;
 import order.product;
 import stock.Stock;
@@ -11,16 +10,10 @@ import stock.StockProducts;
 import stock.Type;
 import stock.supplier;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 
@@ -177,10 +170,10 @@ public class SQLQueries {
         }
         return types;
     }
-    public HashMap<Integer, supplier> fetchSupplier() {
+    public HashMap<String, supplier> fetchSupplier() {
         connection = con.getConnection();
         supplier s;
-        HashMap<Integer,supplier> suppliers = new HashMap<Integer,supplier>();
+        HashMap<String,supplier> suppliers = new HashMap<String,supplier>();
         ResultSet resultSet= null;;
         try {
             Statement statement = connection.createStatement();
@@ -195,7 +188,7 @@ public class SQLQueries {
                 s.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
                 s.setEmail(resultSet.getString(3).trim().replaceAll(" +", " "));
                 s.setPhoneNumber(Integer.parseInt(resultSet.getString(4).trim().replaceAll(" +", " ")));
-                suppliers.put(s.getId(),s);
+                suppliers.put(s.getName(),s);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -227,6 +220,153 @@ public class SQLQueries {
         }
         return Products;
     }
+    public HashMap<String, product> fetchAllProduct(){
+        connection = con.getConnection();
+        HashMap<String, product> pro = new HashMap<>();
+        product p;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = null;
 
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "SELECT * from products ";
+            resultSet = statement.executeQuery(selectSql);
 
+            // Print results from select statement
+            while (resultSet.next()) {
+                p = new product();
+                p.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
+                p.setPrice(Integer.parseInt(resultSet.getString(3).trim().replaceAll(" +", " ")));
+                pro.put(p.getName(),p);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pro;
+    }
+    public void AddType(String str) {
+        connection = con.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = null;
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "INSERT INTO ProductType" +
+                    "  (Name)\n" +
+                    "VALUES" +
+                    "  ('" +
+                    str +
+                    "');";
+            statement.executeQuery(selectSql);
+            // Print results from select statement
+        } catch (SQLException e) {
+            //System.out.println(e.getSQLState());
+        }
+    }
+
+    public void AddStockProduct(StockProducts s,String type){
+        Stock stock = new Stock();
+        connection = con.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = null;
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "INSERT INTO StockProducts" +
+                    "  (name,Amount,Price,supplier,type)\n" +
+                    "VALUES" +
+                    "  ('" +
+                    s.getName() +
+                    "','" +
+                    s.getAmount() +
+                    "','" +
+                    s.getPrice() +
+                    "','" +
+                    stock.GetSupplier(s.getSup().getName()).getId()+
+                    "','" +
+                    type
+                     +
+                    "');";
+            statement.executeQuery(selectSql);
+            // Print results from select statement
+        } catch (SQLException e) {
+            //System.out.println(e.getSQLState());
+        }
+    }
+
+    public void Addsupplier(supplier supplier) {
+        connection = con.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = null;
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "INSERT INTO supplier" +
+                    "  (Name,Email,PhoneNumber)\n" +
+                    "VALUES" +
+                    "  ('" +
+                    supplier.getName() +
+                    "','" +
+                    supplier.getEmail() +
+                    "','" +
+                    supplier.getPhoneNumber()
+                    +
+                    "');";
+            statement.executeQuery(selectSql);
+            // Print results from select statement
+        } catch (SQLException e) {
+            //System.out.println(e.getSQLState());
+        }
+    }
+    public int getLastOrderId(){
+        connection = con.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = null;
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "select max(id) from orders  ";
+            resultSet = statement.executeQuery(selectSql);
+            // Print results from select statement
+            if(resultSet.next())
+                return Integer.parseInt(resultSet.getString(1));
+        } catch (SQLException e) {
+            //System.out.println(e.getSQLState());
+        }
+        return -1;
+    }
+
+    public void AddOrders(OrderInfo o){
+        connection = con.getConnection();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = null;
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "INSERT INTO orders" +
+                    "  (id,price,Date,status,cid,products)\n" +
+                    "VALUES" +
+                    "  ('" +
+                    o.getId() +
+                    "','" +
+                    o.getPrice() +
+                    "','" +
+                    LocalDateTime.parse(o.getDate()).format(formatter) +
+                    "','" +
+                    o.getStatus() +
+                    "','" +
+                    fetchCustomer(o.getC().getPhone()) +
+                    "','" +
+                    o.getParsedProduct()
+                    +
+                    "');";
+            System.out.println(o);
+            resultSet = statement.executeQuery(selectSql);
+            // Print results from select statement
+            System.out.println(resultSet);
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+        }
+    }
 }
