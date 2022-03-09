@@ -1,4 +1,4 @@
-package invoice;
+package Gui;
 
 import Database.SQLDatabaseConnection;
 import com.itextpdf.kernel.colors.DeviceRgb;
@@ -12,6 +12,7 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
+import invoice.InvoicesModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

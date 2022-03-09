@@ -13,11 +13,11 @@ public class status {
     public String getStatus(){
         switch(currentStatus){
             case 1:
-                return "pendding";
+                return "pending";
             case 2:
                 return "Shipped";
             case 3:
-                return "Finished";
+                return "finished";
             default:
                 return null;
         }

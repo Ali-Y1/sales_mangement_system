@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -111,23 +112,22 @@
                </HBox>
             </children>
          </VBox>
-         <TextArea editable="false" prefHeight="138.0" prefWidth="168.0" />
+         <TextArea fx:id="note" editable="false" prefHeight="138.0" prefWidth="168.0" />
           </children>
       </HBox>
-      <HBox prefHeight="26.0" prefWidth="501.0" spacing="21.0">
+      <HBox fx:id="radioC" prefHeight="26.0" prefWidth="501.0" spacing="21.0">
           <children>
               <Label prefHeight="19.0" prefWidth="127.0" text="Payment And Status">
                   <font>
                       <Font name="System Bold" size="13.0" />
                   </font>
               </Label>
-         <Label fx:id="finished" styleClass="payment" text="Finshied" />
-         <Label fx:id="paid" styleClass="payment" text="Paid" />
-         <Label fx:id="pendding" styleClass="payment" text="Pendding" />
-         <Label fx:id="pvcc" styleClass="payment" text="Paid Via Creidt Card" />
+         <RadioButton fx:id="paid" mnemonicParsing="false" text="Paid" />
+         <RadioButton fx:id="pending" mnemonicParsing="false" text="Pending" />
+         <RadioButton fx:id="payC" mnemonicParsing="false" text="Paid Via Creidt Card" />
           </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="31.0" prefWidth="533.0" spacing="70.0" style="-fx-border-color: #5d3c75; -fx-border-width: 1px 0px 0px 0px;">
+      <HBox fx:id="bH" alignment="CENTER" prefHeight="31.0" prefWidth="533.0" spacing="70.0" style="-fx-border-color: #5d3c75; -fx-border-width: 1px 0px 0px 0px;">
           <children>
               <Button mnemonicParsing="false" onAction="#close" prefHeight="21.0" prefWidth="124.0" style="-fx-background-color: #5d3c75;" text="Close" textFill="WHITE">
                   <font>

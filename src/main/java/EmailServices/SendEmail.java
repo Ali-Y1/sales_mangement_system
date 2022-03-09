@@ -16,17 +16,17 @@ package EmailServices;
 
 public class SendEmail {
 
-    public void connectAndSend(String Msg){
+    public void connectAndSend(String Msg,String Recipient){
         //authentication info
-        final String username = "yourUsername@email.com";
-        final String password = "password";
-        String fromEmail = "fromemail@yahoo.com";
-        String toEmail = "toEmail@example.com";
+        final String username = "salesmangment.lu@gmail.com";
+        final String password = "sales.mangment.lu.1";
+        String fromEmail = "salesmangment.lu@gmail.com";
+        String toEmail = Recipient;
 
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.mail.yahoo.com");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
 
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
@@ -48,12 +48,12 @@ public class SendEmail {
             textBodyPart.setText("My multipart text");
 
             //Attachment body part.
-            MimeBodyPart pdfAttachment = new MimeBodyPart();
-            pdfAttachment.attachFile("/home/parallels/Documents/docs/javamail.pdf");
+            //MimeBodyPart pdfAttachment = new MimeBodyPart();
+            //pdfAttachment.attachFile("/home/parallels/Documents/docs/javamail.pdf");
 
             //Attach body parts
             emailContent.addBodyPart(textBodyPart);
-            emailContent.addBodyPart(pdfAttachment);
+            //emailContent.addBodyPart(pdfAttachment);
 
             //Attach multipart to message
             msg.setContent(emailContent);
@@ -61,9 +61,6 @@ public class SendEmail {
             Transport.send(msg);
             System.out.println("Sent message");
         } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

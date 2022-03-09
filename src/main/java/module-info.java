@@ -2,9 +2,9 @@ module com.example.salesmangement {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires java.mail;
     requires kernel;
     requires layout;
+    requires javax.mail.api;
 
 
     opens Gui to javafx.fxml;

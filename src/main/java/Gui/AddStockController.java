@@ -6,21 +6,22 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import order.product;
 import stock.Stock;
 import stock.StockProducts;
 import stock.Type;
 import stock.supplier;
 
 import java.util.Map;
-import java.util.function.Supplier;
 
 public class AddStockController {
+    @FXML
+    private CheckBox ns;
 
     @FXML
     private TextField txt1;
@@ -53,16 +54,16 @@ public class AddStockController {
     ObservableList<String> StockTypes;
     SQLQueries query = new SQLQueries();
     Stock s = new Stock();
-    boolean newSupplier=true;
+    boolean newSupplier=false;
     StockProducts stockProduct;
     String typeE;
     boolean edited=false;
     public AddStockController(){
-
     }
     public AddStockController(StockProducts s,String type){
         stockProduct = s;
         typeE = type;
+        edited=true;
     }
     @FXML
     void initialize(){
@@ -90,7 +91,6 @@ public class AddStockController {
                     Sname.setText(SupplierListView.getSelectionModel().getSelectedItem());
                     SEmail.setText(s.GetSupplier(SupplierListView.getSelectionModel().getSelectedItem()).getEmail());
                     SNumber.setText(String.valueOf(s.GetSupplier(SupplierListView.getSelectionModel().getSelectedItem()).getPhoneNumber()));
-                    newSupplier = false;
                 }
             });
 
@@ -139,11 +139,37 @@ public class AddStockController {
             SupplierListView.toBack();
         SupplierListView.getItems().setAll(result);
     }
+    @FXML
+    void NewSupplier(){
+        if(ns.isSelected()) {
+            Sname.setDisable(false);
+            SNumber.setDisable(false);
+            SEmail.setDisable(false);
+            newSupplier = true;
+        }else{
+            Sname.setDisable(true);
+            SNumber.setDisable(true);
+            SEmail.setDisable(true);
+            newSupplier = false;
+        }
+    }
 
     @FXML
     void Save(ActionEvent event) {
         if (edited) {
             //edit the object without creating new one
+            if (newSupplier) {
+                supplier S = new supplier(Sname.getText(), Integer.parseInt(SNumber.getText()), SEmail.getText());
+                query.Addsupplier(S);
+                s.refreshSupplier();
+            }
+            stockProduct.setName(txt1.getText());
+            stockProduct.setPrice(Integer.parseInt(txt2.getText()));
+            stockProduct.setAmount(Integer.parseInt(txt3.getText()));
+            if(stockProduct.getSup().getPhoneNumber() != Integer.parseInt(SNumber.getText()))
+                stockProduct.setSup(new supplier(Sname.getText(), Integer.parseInt(SNumber.getText()), SEmail.getText()));
+            query.updateStockProduct(stockProduct,types.getValue());
+
         } else {
             if (types.getValue() == null)
                 System.out.println("you should select a type");
@@ -160,7 +186,8 @@ public class AddStockController {
                 }
 
             }
-            close(event);
+
         }
+        close(event);
     }
 }

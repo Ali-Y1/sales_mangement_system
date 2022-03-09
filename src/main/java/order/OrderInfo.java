@@ -10,7 +10,7 @@ public class OrderInfo {
     //order class for customer and the order details
 
 
-    private static int id=-1;
+    private int id;
     private String Details;
     private float price;
     private String status;
@@ -18,12 +18,7 @@ public class OrderInfo {
     private ArrayList<product> products = new ArrayList<product>();
     private customer c;
     SQLQueries q = new SQLQueries();
-    public OrderInfo(){
-        if(id == -1){
-            id=q.getLastOrderId();
-        }else
-            id++;
-    }
+
     public ArrayList<product> getProducts() {
         return products;
     }

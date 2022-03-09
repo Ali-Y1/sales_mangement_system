@@ -1,8 +1,7 @@
 package login;
 
 import Database.SQLDatabaseConnection;
-import Database.SQLQueries;
-import Gui.Main;
+import Gui.Test;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,11 +78,11 @@ public class Login {
         }
         if (emp != null) {
             Stage window = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Test.class.getResource("view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 900, 500);
             window.setTitle("Hello!");
             window.initStyle(StageStyle.UNDECORATED);
-            window.getIcons().add(new Image(Main.class.getResourceAsStream("img/sales-removebg-preview.png")));
+            window.getIcons().add(new Image(Test.class.getResourceAsStream("img/sales-removebg-preview.png")));
             window.setScene(scene);
             window.show();
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();

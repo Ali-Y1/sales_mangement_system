@@ -1,8 +1,8 @@
-package invoice;
+package Gui;
 
 import Database.SQLDatabaseConnection;
 import Database.SQLQueries;
-import Gui.Main;
+import invoice.InvoicesModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Controller implements Initializable {
+public class InvoiceController implements Initializable {
     @FXML
     private TableColumn<InvoicesModel, String> caddress;
     @FXML
@@ -119,7 +119,7 @@ public class Controller implements Initializable {
                     try {
                         Stage window =new Stage();
                         window.initModality(Modality.APPLICATION_MODAL);
-                        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("orderview.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(Test.class.getResource("orderview.fxml"));
                         InvoiceprintControler ordercontrol = new InvoiceprintControler(rowData);
                         fxmlLoader.setController(ordercontrol);
                         Scene scene = new Scene(fxmlLoader.load(), 600, 700);
@@ -136,7 +136,7 @@ public class Controller implements Initializable {
         });
         }
         catch (Exception e) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE,null,e);
+            Logger.getLogger(InvoiceController.class.getName()).log(Level.SEVERE,null,e);
             e.printStackTrace();
         }
 

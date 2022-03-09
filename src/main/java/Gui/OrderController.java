@@ -4,7 +4,6 @@ import Database.SQLQueries;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,7 +22,6 @@ import order.customer;
 import order.product;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
@@ -77,16 +75,20 @@ public class OrderController {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     OrderInfo rowData = row.getItem();
                     try {
+                        System.out.println(rowData);
                         Stage window = new Stage();
                         window.initModality(Modality.APPLICATION_MODAL);
-                        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("viewOrder.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(Test.class.getResource("viewOrder.fxml"));
                         VieworderController vieworder = new VieworderController(rowData);
                         fxmlLoader.setController(vieworder);
                         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
                         window.initStyle(StageStyle.UNDECORATED);
                         window.setScene(scene);
                         window.showAndWait();
-                        System.out.println(rowData);
+                        tableOrders.getItems().removeAll();
+                        tableOrders.getItems().setAll(orders);
+                        tableOrdersPennding.getItems().removeAll();
+                        tableOrdersPennding.getItems().setAll(orders);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -95,16 +97,22 @@ public class OrderController {
             return row ;
         });
 
+
     }
 @FXML
     public void create() throws IOException {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("CreateOrder.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Test.class.getResource("CreateOrder.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 720, 480);
         window.initStyle(StageStyle.UNDECORATED);
         window.setScene(scene);
-        window.show();
+        window.showAndWait();
+        orders = query.fetchOrders();
+        tableOrders.getItems().removeAll();
+        tableOrders.getItems().setAll(orders);
+        tableOrdersPennding.getItems().removeAll();
+        tableOrdersPennding.getItems().setAll(orders);
     }
     @FXML
     public void searchOrders(){
@@ -142,14 +150,13 @@ public class OrderController {
                     try {
                         Stage window = new Stage();
                         window.initModality(Modality.APPLICATION_MODAL);
-                        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("viewOrder.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(Test.class.getResource("viewOrder.fxml"));
                         VieworderController vieworder = new VieworderController(rowData);
                         fxmlLoader.setController(vieworder);
                         Scene scene = new Scene(fxmlLoader.load(), 720, 460);
                         window.initStyle(StageStyle.UNDECORATED);
                         window.setScene(scene);
                         window.showAndWait();
-                        System.out.println(rowData);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

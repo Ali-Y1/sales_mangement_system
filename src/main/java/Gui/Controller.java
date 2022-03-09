@@ -18,11 +18,22 @@ public class Controller{
 
     double x,y;
 
-
+    @FXML
+    void initialize() throws IOException {
+        Parent fxmlLoader = FXMLLoader.load(Test.class.getResource("welcome.fxml"));
+        panel.getChildren().removeAll();
+        panel.getChildren().setAll(fxmlLoader);
+        panel.getChildren().stream().forEach((child) -> {
+            panel.setBottomAnchor(child,0.0);
+            panel.setTopAnchor(child,0.0);
+            panel.setLeftAnchor(child,0.0);
+            panel.setRightAnchor(child,0.0);
+        });
+    }
 
     @FXML
     protected void orderButtonClick() throws IOException {
-        Parent fxmlLoader = FXMLLoader.load(Main.class.getResource("orders.fxml"));
+        Parent fxmlLoader = FXMLLoader.load(Test.class.getResource("orders.fxml"));
         panel.getChildren().removeAll();
         panel.getChildren().setAll(fxmlLoader);
         panel.getChildren().stream().forEach((child) -> {
@@ -53,7 +64,7 @@ public class Controller{
      */
     @FXML
     protected void stockButtonClick() throws IOException {
-        Parent fxmlLoader = FXMLLoader.load(Main.class.getResource("stock.fxml"));
+        Parent fxmlLoader = FXMLLoader.load(Test.class.getResource("stock.fxml"));
         panel.getChildren().removeAll();
         panel.getChildren().setAll(fxmlLoader);
         panel.getChildren().stream().forEach((child) -> {
@@ -65,7 +76,7 @@ public class Controller{
     }
     @FXML
     protected void invoiceButtonClick() throws IOException {
-        Parent fxmlLoader = FXMLLoader.load(Main.class.getResource("Invoices.fxml"));
+        Parent fxmlLoader = FXMLLoader.load(Test.class.getResource("Invoices.fxml"));
         panel.getChildren().removeAll();
         panel.getChildren().setAll(fxmlLoader);
         panel.getChildren().stream().forEach((child) -> {
@@ -78,7 +89,7 @@ public class Controller{
     }
     @FXML
     protected void AboutBtClicked() throws IOException {
-        Parent fxmlLoader = FXMLLoader.load(Main.class.getResource("About.fxml"));
+        Parent fxmlLoader = FXMLLoader.load(Test.class.getResource("About.fxml"));
         panel.getChildren().removeAll();
         panel.getChildren().setAll(fxmlLoader);
         panel.getChildren().stream().forEach((child) -> {

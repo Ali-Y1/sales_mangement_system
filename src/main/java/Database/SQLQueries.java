@@ -138,6 +138,7 @@ public class SQLQueries {
                 order.setStatus(resultSet.getString(4).trim().replaceAll(" +", " "));
                 order.setC(fetchCustomerByID(Integer.parseInt(resultSet.getString(5))));
                 order.parseProduct(resultSet.getString(6));
+                order.setDetails(resultSet.getString(7));
                 orders.add(order);
             }
         } catch (SQLException e) {
@@ -208,6 +209,7 @@ public class SQLQueries {
             Stock s = new Stock();
             while(resultSet.next()){
                 StockProducts p= new StockProducts();
+                p.setId(Integer.parseInt(resultSet.getString(1).trim().replaceAll(" +", " ")));
                 p.setName(resultSet.getString(2).trim().replaceAll(" +", " "));
                 p.setAmount(Integer.parseInt(resultSet.getString(3).trim().replaceAll(" +", " ")));
                 p.setPrice((int)Float.parseFloat(resultSet.getString(4).trim().replaceAll(" +", " ")));
@@ -345,7 +347,7 @@ public class SQLQueries {
 
             // Create and execute a SELECT SQL statement.
             String selectSql = "INSERT INTO orders" +
-                    "  (id,price,Date,status,cid,products)\n" +
+                    "  (id,price,Date,status,cid,products,details)\n" +
                     "VALUES" +
                     "  ('" +
                     o.getId() +
@@ -360,11 +362,59 @@ public class SQLQueries {
                     "','" +
                     o.getParsedProduct()
                     +
+                    "','"
+                    +
+                    o.getDetails()
+                    +
                     "');";
             System.out.println(o);
             resultSet = statement.executeQuery(selectSql);
             // Print results from select statement
-            System.out.println(resultSet);
+            //System.out.println(resultSet);
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+        }
+    }
+    public void UpdateOrderState(String s,int id) {
+        connection = con.getConnection();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = null;
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "UPDATE sales_mangment.dbo.orders\n" +
+                    "SET status = " +"'" +s+"'"  +
+                    "WHERE id = "+ id +";";
+            resultSet = statement.executeQuery(selectSql);
+            // Print results from select statement
+            //System.out.println(resultSet);
+        } catch (SQLException e) {
+            System.out.println(e.getSQLState());
+        }
+    }
+
+
+    public void updateStockProduct(StockProducts stockProduct, String type) {
+        System.out.println("hi");
+        Stock stock = new Stock();
+        connection = con.getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = null;
+
+            // Create and execute a SELECT SQL statement.
+            String selectSql = "UPDATE sales_mangment.dbo.StockProducts\n" +
+                    "SET name = N"+ "'" + stockProduct.getName() + "'"+","+
+                    "Amount = "+  stockProduct.getAmount()+","+
+                    "Price = "+ stockProduct.getPrice()+","+
+                    "supplier = "+stock.GetSupplier(stockProduct.getSup().getName()).getId()+","+
+                    "type = N"+ "'"+ type+ "' \n"+
+                    "WHERE id = "+ stockProduct.getId() +";";
+            //System.out.println(selectSql);
+            resultSet = statement.executeQuery(selectSql);
+            // Print results from select statement
+            //System.out.println(resultSet);
         } catch (SQLException e) {
             System.out.println(e.getSQLState());
         }

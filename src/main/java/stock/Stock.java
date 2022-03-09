@@ -19,6 +19,7 @@ public class Stock {
     }
 
     private static HashMap<String,supplier> Supplier ;
+
     private static ArrayList<Type> Types ;
 
     public void refreshSupplier(){

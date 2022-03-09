@@ -46,7 +46,7 @@
             </Button>
          </children>
       </HBox>
-      <TextField promptText="Search">
+      <TextField disable="true" promptText="Search">
          <VBox.margin>
             <Insets top="3.0" />
          </VBox.margin>

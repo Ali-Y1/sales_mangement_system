@@ -1,7 +1,15 @@
 package stock;
 
 public class  StockProducts {
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private String Name;
     private String Price="";
     private String Amount="";

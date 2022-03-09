@@ -81,9 +81,30 @@
     -fx-border-width: 0px;
 }
 .text-area{
-    -fx-background-color: #f5f1f1;
+    -fx-background-color: #000000;
+    -fx-text-fill: #988f8f;
 }
 
 .totalPrice{
     -fx-background-color: #969696;
+}
+
+
+.radio-button .radio{
+    -fx-background-color: #5d3c75;
+    -fx-border-color: #5d3c75;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 2;
+}
+
+.radio-button:selected .mark {
+    -fx-background-color: #ffffff;
+}
+.radio-button:selected .radio {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: #ffffff;
+    -fx-padding: 0;
 }

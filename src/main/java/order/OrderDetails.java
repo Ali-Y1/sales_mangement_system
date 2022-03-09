@@ -10,7 +10,12 @@ public class OrderDetails {
     private int totalPrice=0;
     private String Details;
     private LocalDateTime Date;
-    private SQLQueries query;
+    private SQLQueries query = new SQLQueries();
+    private static int id=-1;
+
+    public static int getId() {
+        return id;
+    }
 
     public String getDetails() {
         return Details;
@@ -23,11 +28,13 @@ public class OrderDetails {
     public OrderDetails(String details) {
         Date = LocalDateTime.now();
         Details = details;
+        if(id == -1)
+            id=query.getLastOrderId();
+        id++;
     }
     // add product is a method that takes products with a given name from the database and adds it to order
     public void AddProduct(String Name,int amount){
         product p;
-        query = new SQLQueries();
         p = query.fetchProducts(Name);
         p.setAmount(amount);
         products.add(p);

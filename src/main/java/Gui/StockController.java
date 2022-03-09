@@ -16,7 +16,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import order.OrderInfo;
 import stock.Stock;
 import stock.StockProducts;
 import stock.Type;
@@ -139,7 +138,7 @@ public class StockController {
                                 Stage window = new Stage();
 
                                 window.initModality(Modality.APPLICATION_MODAL);
-                                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AddStock.fxml"));
+                                FXMLLoader fxmlLoader = new FXMLLoader(Test.class.getResource("AddStock.fxml"));
                                 AddStockController AddController = new AddStockController(r,row.getTreeItem().getParent().getValue().getName());
 
                                 fxmlLoader.setController(AddController);
@@ -205,7 +204,7 @@ public class StockController {
     public void AddStock() throws IOException {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AddStock.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Test.class.getResource("AddStock.fxml"));
         AddStockController AddController = new AddStockController();
         fxmlLoader.setController(AddController);
         Scene scene = new Scene(fxmlLoader.load(), 720, 440);

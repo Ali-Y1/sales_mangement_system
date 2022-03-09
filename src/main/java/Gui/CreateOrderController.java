@@ -21,6 +21,8 @@ import order.regularOrder;
 import java.util.Map;
 
 public class CreateOrderController {
+
+
     @FXML
     private Button EInvoice;
     @FXML
@@ -157,7 +159,7 @@ public class CreateOrderController {
         }
     }
     @FXML
-    void Save(){
+    void Save(ActionEvent event){
         SQLQueries q =new SQLQueries();
         if(FBox.isSelected()){
             OrderInfo order = new OrderInfo();
@@ -175,6 +177,7 @@ public class CreateOrderController {
             order.setPrice(fast.getOd().getTotalPrice());
             order.setDate(String.valueOf(fast.getOd().getDate()));
             order.setDetails("");
+            order.setId(fast.getOd().getId());
             q.AddOrders(order);
         }else{
             regularOrder regular = new regularOrder();
@@ -194,7 +197,11 @@ public class CreateOrderController {
             order.setPrice(regular.getOd().getTotalPrice());
             order.setDate(String.valueOf(regular.getOd().getDate()));
             order.setDetails(regular.getOd().getDetails());
+            order.setId(regular.getOd().getId());
+            order.setStatus(regular.getStatus());
             q.AddOrders(order);
         }
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.close();
     }
 }
